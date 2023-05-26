@@ -1,7 +1,7 @@
-import "./App.css";
-
+import './App.css';
+import Routing from './routing/routing';
 function App() {
-  return <div>aboba</div>;
+  return <Routing />;
 }
 
 export default App;
