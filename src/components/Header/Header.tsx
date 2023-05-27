@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 export const Header = () => {
   return (
     <div className={styles.headerWrapper}>
-      <HeaderLogo />
+      <Link to={'/main'}>
+        <HeaderLogo />
+      </Link>
       <Link to={'/main'}>
         <Button text='главная' />
       </Link>
