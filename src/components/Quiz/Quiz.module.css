@@ -1,0 +1,25 @@
+.quizContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  padding: 180px;
+  max-width: 400px;
+  border-radius: 8px;
+}
+.quizType {
+  font-size: 45px;
+}
+.yelow {
+  color: yellow;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px yellow;
+}
+.red {
+  color: red;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px red;
+}
+
+.blue {
+  color: blue;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px blue;
+}

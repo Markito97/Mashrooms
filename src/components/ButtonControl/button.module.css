@@ -1,0 +1,10 @@
+.buttonControl {
+  outline: none;
+  border: none;
+  background-color: whitesmoke;
+  font-family: 'Ubuntu', sans-serif;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 5px 28px;
+  cursor: pointer;
+}
