@@ -19,7 +19,11 @@
   text-shadow: 3px 5px 6px #6c9, 6px 7px 6px red;
 }
 
+.white-blue {
+  color: rgb(8 126 164);
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px rgb(8 126 164);
+}
 .blue {
-  color: blue;
-  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px blue;
+  color: #3178c6;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px #3178c6;
 }

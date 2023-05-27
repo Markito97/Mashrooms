@@ -8,13 +8,13 @@ const Quizzes = () => {
         <Quiz quizType='JavaScript' color='yelow' />
       </Link>
       <Link to={'/quizzes/react'}>
-        <Quiz quizType='React' color='red' />
+        <Quiz quizType='React' color='white-blue' />
       </Link>
       <Link to={'/quizzes/ts'}>
         <Quiz quizType='TypeScript' color='blue' />
       </Link>
       <Link to={'/quizzes/html'}>
-        <Quiz quizType='HTML/CSS' color='blue' />
+        <Quiz quizType='HTML/CSS' color='red' />
       </Link>
     </div>
   );
