@@ -4,16 +4,16 @@ import { Quiz } from '../../components/Quiz/Quiz';
 const Quizzes = () => {
   return (
     <div className={styles.quizesWrapper}>
-      <Link to={'/quizzes/js'}>
+      <Link to={'/quizzes/JS'}>
         <Quiz quizType='JavaScript' color='yelow' />
       </Link>
-      <Link to={'/quizzes/react'}>
+      <Link to={'/quizzes/React'}>
         <Quiz quizType='React' color='white-blue' />
       </Link>
-      <Link to={'/quizzes/ts'}>
+      <Link to={'/quizzes/TS'}>
         <Quiz quizType='TypeScript' color='blue' />
       </Link>
-      <Link to={'/quizzes/html'}>
+      <Link to={'/quizzes/HTML'}>
         <Quiz quizType='HTML/CSS' color='red' />
       </Link>
     </div>

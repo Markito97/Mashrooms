@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { Layout } from '../components/Layout';
+import { Layout } from '../components/Layout/Layout';
 import { Main } from '../pages/Main/Main';
 import { Quizzes } from '../pages/Quizzes/Quizzes';
 import { Quiz } from '../pages/Quiz';
+import { QuizzesPage } from '../pages/QuizzesPage/QuizzesPage';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/quizzes/:type',
-        element: <Quiz />,
+        element: <QuizzesPage />,
       },
     ],
   },

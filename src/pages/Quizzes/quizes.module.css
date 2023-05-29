@@ -4,5 +4,6 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  gap: 10px;
+  gap: 80px;
+  padding: 20px 0px 20px 0px;
 }
