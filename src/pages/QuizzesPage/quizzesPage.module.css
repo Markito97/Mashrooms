@@ -1,0 +1,28 @@
+.quizzesPageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.JS {
+  color: yellow;
+}
+.React {
+  color: rgb(8 126 164);
+}
+.TS {
+  color: #3178c6;
+}
+.HTML {
+  color: red;
+}
+.header {
+  font-size: 96px;
+}
+.quizCardsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
