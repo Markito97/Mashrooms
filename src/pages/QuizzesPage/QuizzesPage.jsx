@@ -9,18 +9,14 @@ export const QuizzesPage = () => {
   const typeOfPage = getTypeOfPage(type);
   const { data, isLoading } = useGetJSQuizzesQuery(type);
   const [quizInfo, setData] = useState({});
-  if (isLoading) {
-    return <div>isLoading...</div>;
-  } else {
-    setData(data);
-    return (
-      <div className={styles.quizzesPageWrapper}>
-        <div className={`${styles.header} ${styles[type]}`}>{typeOfPage}</div>
-        <div className={styles.quizCardsContainer}>
-          {' '}
-          <QuizCard quizInfo={quizInfo} />
-        </div>
+
+  return (
+    <div className={styles.quizzesPageWrapper}>
+      <div className={`${styles.header} ${styles[type]}`}>{typeOfPage}</div>
+      <div className={styles.quizCardsContainer}>
+        {' '}
+        <QuizCard quizInfo={quizInfo} />
       </div>
-    );
-  }
+    </div>
+  );
 };
