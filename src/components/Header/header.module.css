@@ -1,0 +1,22 @@
+.headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 82px;
+}
+.logoText {
+  color: whitesmoke;
+  font-size: 32px;
+}
+.headerLogo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+header {
+  width: 100%;
+  background-color: black;
+}

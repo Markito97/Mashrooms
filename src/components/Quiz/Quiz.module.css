@@ -1,0 +1,29 @@
+.quizContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  padding: 180px;
+  max-width: 400px;
+  border-radius: 20px;
+}
+.quizType {
+  font-size: 45px;
+}
+.yelow {
+  color: yellow;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px yellow;
+}
+.red {
+  color: red;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px red;
+}
+
+.white-blue {
+  color: rgb(8 126 164);
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px rgb(8 126 164);
+}
+.blue {
+  color: #3178c6;
+  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px #3178c6;
+}

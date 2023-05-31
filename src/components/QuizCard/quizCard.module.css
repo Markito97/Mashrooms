@@ -1,0 +1,24 @@
+.quizCardContainer {
+  min-width: 900px;
+  min-height: 200px;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header,
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nameOfQuiz {
+  font-weight: 700;
+  font-size: 35px;
+}
+.countOfQuestions {
+  font-weight: 700;
+  font-size: 30px;
+}

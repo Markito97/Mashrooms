@@ -1,0 +1,11 @@
+.footerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 82px;
+}
+footer {
+  width: 100%;
+  background-color: black;
+}
