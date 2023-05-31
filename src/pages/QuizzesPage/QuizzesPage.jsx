@@ -9,7 +9,6 @@ export const QuizzesPage = () => {
   const { type } = useParams();
   const typeOfPage = getTypeOfPage(type);
   const { data, isLoading } = useGetJSQuizzesQuery(type);
-  console.log(data);
   const dispatch = useDispatch();
   if (isLoading) {
     return null;

@@ -1,6 +1,7 @@
 import styles from './complexityOfQuiz.module.css';
 import { ReactComponent as ActiveMushroom } from '../../assets/icons/activeMushroom.svg';
 import { ReactComponent as InactiveMushroom } from '../../assets/icons/inactiveMushroom.svg';
+import React from 'react';
 
 export const ComplexityOfQuiz = (props) => {
   const mushroomIcons = [];
@@ -13,7 +14,9 @@ export const ComplexityOfQuiz = (props) => {
   }
   return (
     <div className={styles.complexityWrapper}>
-      {mushroomIcons.map((icon) => icon)}
+      {mushroomIcons.map((icon, index) => (
+        <React.Fragment key={index + Date.now()}>{icon}</React.Fragment>
+      ))}
     </div>
   );
 };
