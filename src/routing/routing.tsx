@@ -6,6 +6,7 @@ import { Main } from '../pages/Main/Main';
 import { Quizzes } from '../pages/Quizzes/Quizzes';
 import { Quiz } from '../pages/Quiz';
 import { QuizzesPage } from '../pages/QuizzesPage/QuizzesPage';
+import { QuizStart } from '../pages/QuizStart/QuizStart';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/quizzes/:type',
         element: <QuizzesPage />,
+      },
+      {
+        path: '/quizStart/:id',
+        element: <QuizStart />,
       },
     ],
   },

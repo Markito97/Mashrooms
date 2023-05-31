@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useGetJSQuizzesQuery } from '../../redux';
 import { getTypeOfPage } from '../../utils/getTypeOfPage';
 import styles from './quizzesPage.module.css';

@@ -9,6 +9,9 @@ export const quizzesApi = createApi({
     getJSQuizzes: build.query({
       query: (query) => `/?query=${query}`,
     }),
+    getQuize: build.query({
+      query: (query) => `/${query}`,
+    }),
   }),
 });
-export const { useGetJSQuizzesQuery } = quizzesApi;
+export const { useGetJSQuizzesQuery, useGetQuizeQuery } = quizzesApi;
