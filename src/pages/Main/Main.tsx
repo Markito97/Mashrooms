@@ -6,7 +6,7 @@ import { ReactComponent as BackImg } from '../../assets/img/quizzesBackground.sv
 const Main = () => {
   return (
     <div className={styles.mainWrapper}>
-      <BackImg />
+      {/* <BackImg /> */}
       <Link to={'/quizzes'}>
         {' '}
         <Button text={'Quizes'}></Button>

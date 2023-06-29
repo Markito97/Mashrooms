@@ -1,7 +1,6 @@
-import styles from './Quiz.module.css';
-import { useGetJSQuizzesQuery } from '../../redux';
+import styles from './QuizTopic.module.css';
 import { useParams } from 'react-router-dom';
-export const Quiz = (props) => {
+export const QuizTopic = (props) => {
   return (
     <div className={styles.quizContainer}>
       <div className={`${styles.quizType} ${styles[props.color]}`}>

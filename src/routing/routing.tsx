@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { Main } from '../pages/Main/Main';
 import { Quizzes } from '../pages/Quizzes/Quizzes';
-import { Quiz } from '../pages/Quiz';
+import { Quiz } from '../pages/QuizzesPage';
 import { QuizzesPage } from '../pages/QuizzesPage/QuizzesPage';
 import { QuizStart } from '../pages/QuizStart/QuizStart';
 const router = createBrowserRouter([
