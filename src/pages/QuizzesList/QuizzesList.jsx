@@ -1,10 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
 import { getTypeOfPage } from '../../utils/getTypeOfPage';
-import styles from './quizzesPage.module.css';
+import styles from './quizzesList.module.css';
 import { QuizCard } from '../../features/quizzes/QuizCard';
 import { useDispatch } from 'react-redux';
 
-export const QuizzesPage = () => {
+export const QuizzesList = () => {
   const { type } = useParams();
   const typeOfPage = getTypeOfPage(type);
   return (

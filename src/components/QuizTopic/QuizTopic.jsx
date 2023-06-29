@@ -1,5 +1,5 @@
 import styles from './QuizTopic.module.css';
-import { useParams } from 'react-router-dom';
+
 export const QuizTopic = (props) => {
   return (
     <div className={styles.quizContainer}>

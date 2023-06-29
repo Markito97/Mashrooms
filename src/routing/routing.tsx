@@ -4,8 +4,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { Main } from '../pages/Main/Main';
 import { Quizzes } from '../pages/Quizzes/Quizzes';
-import { Quiz } from '../pages/QuizzesPage';
-import { QuizzesPage } from '../pages/QuizzesPage/QuizzesPage';
+import { Quiz } from '../pages/QuizzesList';
+import { QuizzesList } from '../pages/QuizzesList/QuizzesList';
 import { QuizStart } from '../pages/QuizStart/QuizStart';
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/quizzes/:type',
-        element: <QuizzesPage />,
+        element: <QuizzesList />,
       },
       {
         path: '/quizStart/:id',
