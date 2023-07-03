@@ -3,6 +3,7 @@ import { QuizQuestion } from '../../components/QuizQuestion/QuizQuestion';
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getQuizById } from '../../config';
+import { CircularProgress } from '@mui/material';
 export const QuizStart = () => {
   const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState('');
@@ -18,7 +19,11 @@ export const QuizStart = () => {
   }, []);
   return (
     <>
-      {!questions.length && <h2>Loading....</h2>}
+      {!questions.length && (
+        <h2>
+          <CircularProgress size={100} />
+        </h2>
+      )}
       <QuizQuestion category={category} questions={questions} />
     </>
   );

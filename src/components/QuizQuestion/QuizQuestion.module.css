@@ -4,14 +4,22 @@
   min-height: 950px;
   padding-bottom: 20px;
   padding-top: 28px;
-  gap: 45px;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .btnContainer {
   display: flex;
   align-content: center;
   justify-content: space-between;
+  /* min-width: 756px; */
+  margin-top: 20px;
 }
 .questionAnswer {
   border: 1px solid black;
   margin-bottom: 5px;
+}
+.questionBoxTitle {
+  font-size: 60px;
+  color: #1976d2;
 }
