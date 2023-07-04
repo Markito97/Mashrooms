@@ -5,7 +5,8 @@
   background-color: black;
   padding: 180px;
   max-width: 400px;
-  border-radius: 20px;
+  border-radius: 10%;
+  border: 1px solid #1976d2;
 }
 .quizType {
   font-size: 45px;

@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 20px;
+  border: 1px solid #1976d2;
 }
 .header,
 .footer {
