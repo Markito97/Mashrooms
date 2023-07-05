@@ -97,6 +97,7 @@ export const QuizQuestion = ({ category, questions }) => {
         description: questions[questionNumber].description,
         isCorrectAnswer,
         isSkipped: false,
+        userAnswers: answers,
       })
     );
     if (isCorrectAnswer && answers.length !== 0) {
@@ -120,12 +121,17 @@ export const QuizQuestion = ({ category, questions }) => {
   }
   return (
     <div className={styles.questionBox}>
-      <Link
-        to={`/quizzes/${category}`}
-        onClick={dispatch(() => resetToDefault())}
+      <Button
+        onClick={() => {
+          dispatch(resetToDefault());
+          navigate(-1);
+        }}
+        variant='outlined'
+        sx={{ maxWidth: 'fit-content' }}
       >
-        <ArrowBackIcon /> Назад к выбору теста
-      </Link>
+        <ArrowBackIcon />
+        Назад к выбору теста
+      </Button>
       <Container sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <h1
           className={styles.questionBoxTitle}
@@ -138,14 +144,6 @@ export const QuizQuestion = ({ category, questions }) => {
             justifyContent: 'space-between',
           }}
         >
-          <div>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
           <Box
             minWidth={'100px'}
             minHeight={'200px'}

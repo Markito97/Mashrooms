@@ -4,3 +4,9 @@
 .timer {
   margin-bottom: 10px;
 }
+.correctAnswer {
+  background-color: rgb(10, 108, 41) !important;
+}
+.inCorrectAnswer {
+  background-color: rgba(171, 4, 4, 0.365) !important;
+}

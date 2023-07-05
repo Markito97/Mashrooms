@@ -8,10 +8,8 @@ const answersSlice = createSlice({
   name: '@@answers',
   initialState: initialState,
   reducers: {
-    addAnswer: {
-      reducer: (state, action) => {
-        state.list.push(action.payload);
-      },
+    addAnswer: (state, action) => {
+      state.list.push(action.payload);
     },
     resetToDefault: (state, action) => initialState,
   },

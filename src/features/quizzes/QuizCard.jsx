@@ -1,12 +1,14 @@
 import styles from './quizCard.module.css';
-import { Button } from '../../components/ButtonControl/Button';
+import { Button } from '@mui/material';
 import { ComplexityOfQuiz } from '../../components/ComplexityOfQuiz/ComplexityOfQuiz';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useQuizzes } from './use-Quizzes';
+import { useDispatch } from 'react-redux';
+import { resetToDefault } from '../answers/answer-slice';
 export const QuizCard = () => {
   const [quizzes, { status, error, qty }] = useQuizzes();
-
+  const dispatch = useDispatch();
   return (
     <>
       {status === 'loading' && <h2>Loading....</h2>}
@@ -25,8 +27,11 @@ export const QuizCard = () => {
               <div className={styles.countOfQuestions}>
                 Количество вопросов: {quiz.questions.length}
               </div>
-              <Link to={`/quizStart/${quiz._id}`}>
-                <Button text={'cрезать гриб'} />
+              <Link
+                to={`/quizStart/${quiz._id}`}
+                onClick={() => dispatch(resetToDefault())}
+              >
+                <Button variant='outlined'>срезать гриб</Button>
               </Link>
             </div>
           </div>

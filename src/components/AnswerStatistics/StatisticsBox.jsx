@@ -5,22 +5,33 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { useCorrectAnswer } from './useCorrectAnswer';
 export const StatisticsBox = ({
   number,
   question,
   answerOptions,
   description,
-  isCorrectAnswer,
+  userAnswers,
+  correctAnswer,
 }) => {
+  const { correct, incorrect } = useCorrectAnswer(userAnswers, correctAnswer);
   return (
     <div className={styles.statisticBox}>
       <h1>{`Вопрос ${number + 1} :`}</h1>
       <p>{question}</p>
       <ul>
         {answerOptions.map((answer, index) => {
+          let answerColor;
+          if (correct.includes(index)) {
+            answerColor = 'correctAnswer';
+          } else if (incorrect.includes(index)) {
+            answerColor = 'inCorrectAnswer';
+          } else {
+            correctAnswer = null;
+          }
           return (
             <li key={index}>
-              <Highlight color='red'>{answer}</Highlight>
+              <Highlight className={styles[answerColor]}>{answer}</Highlight>
             </li>
           );
         })}
