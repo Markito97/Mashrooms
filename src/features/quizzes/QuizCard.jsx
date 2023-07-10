@@ -29,10 +29,19 @@ export const QuizCard = () => {
               </div>
               <Link
                 to={`/quizStart/${quiz._id}`}
-                onClick={() => dispatch(resetToDefault())}
+                onClick={() => {
+                  dispatch(resetToDefault());
+                }}
               >
                 <Button variant='outlined'>срезать гриб</Button>
               </Link>
+              <Button
+                onClick={() => {
+                  throw new Error('I crashed!');
+                }}
+              >
+                errr
+              </Button>
             </div>
           </div>
         );

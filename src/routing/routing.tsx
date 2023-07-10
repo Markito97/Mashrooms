@@ -8,6 +8,7 @@ import { Quiz } from '../pages/QuizzesList';
 import { QuizzesList } from '../pages/QuizzesList/QuizzesList';
 import { QuizStart } from '../pages/QuizStart/QuizStart';
 import { QuizStatistic } from '../pages/QuizStatistic/QuizStatistic';
+import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
 ]);
 
 const Routing = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <ErrorBoundary>
+      <RouterProvider router={router} />;
+    </ErrorBoundary>
+  );
 };
 
 export default Routing;

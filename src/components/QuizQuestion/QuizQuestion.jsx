@@ -88,6 +88,7 @@ export const QuizQuestion = ({ category, questions }) => {
     const isCorrectAnswer = answers.every((answer) =>
       questions[questionNumber].correctAnswer.includes(answer)
     );
+    console.log(isCorrectAnswer);
     dispatch(
       addAnswer({
         number: questionNumber,

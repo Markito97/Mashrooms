@@ -15,6 +15,7 @@ export const StatisticsBox = ({
   correctAnswer,
 }) => {
   const { correct, incorrect } = useCorrectAnswer(userAnswers, correctAnswer);
+  console.log('answerOptions => ', answerOptions);
   return (
     <div className={styles.statisticBox}>
       <h1>{`Вопрос ${number + 1} :`}</h1>
