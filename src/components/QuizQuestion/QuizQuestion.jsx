@@ -1,6 +1,6 @@
 import styles from './QuizQuestion.module.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Container, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addAnswer } from '../../features/answers/answer-slice';
@@ -14,7 +14,8 @@ import Highlight from 'react-highlight';
 import Checkbox from '@mui/material/Checkbox';
 import FormGroup from '@mui/material/FormGroup';
 import { useLastQuestion } from './useLastQuestion';
-
+import { updateTimer, resetTimer } from '../../features/timer/timer-slice';
+import { Timer } from '../Timer/Timer';
 export const QuizQuestion = ({ category, questions }) => {
   console.log('array with questions =>>', questions);
   const dispatch = useDispatch();
@@ -39,7 +40,15 @@ export const QuizQuestion = ({ category, questions }) => {
       setQuestionNumber(questionNumber + 1);
     }
   };
-
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      dispatch(updateTimer());
+    }, 1000);
+    return () => {
+      dispatch(resetTimer());
+      clearInterval(timerId);
+    };
+  }, []);
   const handleSkipQuestion = (e, questionNumber) => {
     dispatch(
       addAnswer({
@@ -104,12 +113,14 @@ export const QuizQuestion = ({ category, questions }) => {
       })
     );
     if (isCorrectAnswer && answers.length !== 0) {
+      // вынести в отдельный хук?
       setError(false);
       setHelperText('Nice, it is correct answer!');
       setDisabled(true);
       setAnswerColor('green');
       setAsnwer(true);
     } else {
+      // вынести в отдельный хук?
       setError(true);
       setHelperText('Sorry, wrong answer!');
       setAnswerColor('red');
@@ -124,17 +135,25 @@ export const QuizQuestion = ({ category, questions }) => {
   }
   return (
     <div className={styles.questionBox}>
-      <Button
-        onClick={() => {
-          dispatch(resetToDefault());
-          navigate(-1);
-        }}
-        variant='outlined'
-        sx={{ maxWidth: 'fit-content' }}
+      <Box
+        display={'flex'}
+        justifyContent={'space-between'}
+        alignItems={'center'}
       >
-        <ArrowBackIcon />
-        Назад к выбору теста
-      </Button>
+        <Button
+          onClick={() => {
+            dispatch(resetToDefault());
+            navigate(-1);
+          }}
+          variant='outlined'
+          sx={{ maxWidth: 'fit-content' }}
+        >
+          <ArrowBackIcon />
+          Назад к выбору теста
+        </Button>
+        <Timer />
+      </Box>
+
       <Container sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
         <h1
           className={styles.questionBoxTitle}
