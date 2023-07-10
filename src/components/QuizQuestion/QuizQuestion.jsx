@@ -85,10 +85,12 @@ export const QuizQuestion = ({ category, questions }) => {
       setAnswerColor('red');
       return;
     }
-    const isCorrectAnswer = answers.every((answer) =>
-      questions[questionNumber].correctAnswer.includes(answer)
+
+    const isCorrectAnswer = questions[questionNumber].correctAnswer.every(
+      (corrAns) => {
+        return answers.includes(corrAns);
+      }
     );
-    console.log(isCorrectAnswer);
     dispatch(
       addAnswer({
         number: questionNumber,

@@ -12,7 +12,7 @@ export const Header = () => {
       <Link to={'/main'}>
         <Button variant='outlined'>главная</Button>
       </Link>
-      <Button variant='outlined'>Личная грибница</Button>
+      <Button variant='outlined'>Личная страница</Button>
     </div>
   );
 };
