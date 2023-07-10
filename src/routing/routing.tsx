@@ -4,8 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
 import { Main } from '../pages/Main/Main';
 import { Quizzes } from '../pages/Quizzes/Quizzes';
-import { Quiz } from '../pages/Quiz';
-import { QuizzesPage } from '../pages/QuizzesPage/QuizzesPage';
+import { Quiz } from '../pages/QuizzesList';
+import { QuizzesList } from '../pages/QuizzesList/QuizzesList';
+import { QuizStart } from '../pages/QuizStart/QuizStart';
+import { QuizStatistic } from '../pages/QuizStatistic/QuizStatistic';
+import { ErrorBoundary } from '../components/ErrorBoundary/ErrorBoundary.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,14 +24,26 @@ const router = createBrowserRouter([
       },
       {
         path: '/quizzes/:type',
-        element: <QuizzesPage />,
+        element: <QuizzesList />,
+      },
+      {
+        path: '/quizStart/:id',
+        element: <QuizStart />,
+      },
+      {
+        path: '/quizStatistic/:id',
+        element: <QuizStatistic />,
       },
     ],
   },
 ]);
 
 const Routing = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <ErrorBoundary>
+      <RouterProvider router={router} />;
+    </ErrorBoundary>
+  );
 };
 
 export default Routing;

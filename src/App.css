@@ -8,7 +8,6 @@
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  height: 100vh;
 }
 /* Указываем box sizing */
 *,
@@ -82,5 +81,12 @@ select {
 }
 a {
   text-decoration: none;
-  color: black;
+  color: inherit;
+}
+ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+li {
+  list-style-type: none;
 }

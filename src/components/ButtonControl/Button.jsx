@@ -1,4 +1,12 @@
 import styles from './button.module.css';
-export const Button = (props) => {
-  return <button className={styles.buttonControl}>{props.text}</button>;
+export const Button = ({ text, onclick, isDisabled }) => {
+  return (
+    <button
+      className={styles.buttonControl}
+      onClick={onclick}
+      disabled={isDisabled}
+    >
+      {text}
+    </button>
+  );
 };
