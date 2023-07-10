@@ -39,11 +39,7 @@ const router = createBrowserRouter([
 ]);
 
 const Routing = () => {
-  return (
-    <ErrorBoundary>
-      <RouterProvider router={router} />;
-    </ErrorBoundary>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default Routing;

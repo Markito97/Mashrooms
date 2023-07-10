@@ -1,41 +1,25 @@
-// import React from 'react';
-
-// export class ErrorBoundary extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = { hasError: false };
-//   }
-//   static getDerivedStateFromError(error) {
-//     return (this.sate = { hasError: true });
-//   }
-//   componentDidCatch(error, info) {
-//     this.setState({ hasError: true });
-//   }
-//   render() {
-//     if (this.state.hasError) {
-//       return this.props.fallback;
-//     } else {
-//       return this.props.children;
-//     }
-//   }
-// }
-import { Component, PropsWithChildren, ReactNode } from 'react';
-
-export class ErrorBoundary extends Component {
-  state = {};
-
-  componentDidCatch(error, errorInfo) {
-    console.log('ошибка');
-    this.setState({ error, errorInfo });
+import { Component } from 'react';
+class ErrorBoundary extends Component {
+  state = {
+    error: null,
+  };
+  static getDerivedStateFromError(error) {
+    return { error };
   }
-
   render() {
-    console.log('ошибка');
+    console.log('err');
+    const { error } = this.state;
 
-    if (this.state.error) {
-      return <div>zalupa</div>;
+    if (error) {
+      return (
+        <div>
+          <p>Seems like an error occured!</p>
+          <p>{error.message}</p>
+        </div>
+      );
     }
-
     return this.props.children;
   }
 }
+
+export default ErrorBoundary;

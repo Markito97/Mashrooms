@@ -27,7 +27,6 @@ export const QuizStart = () => {
   if (hasError) {
     return <h2>An Error Occured</h2>;
   }
-  console.log('questions => ', questions);
   return (
     <>
       {!questions.length && (
