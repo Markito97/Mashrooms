@@ -1,5 +1,6 @@
 import styles from './QuizQuestion.module.css';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 import { useEffect, useState } from 'react';
 import { Button, Container, Box } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -97,7 +98,10 @@ export const QuizQuestion = ({ category, questions }) => {
 
     const isCorrectAnswer = questions[questionNumber].correctAnswer.every(
       (corrAns) => {
-        return answers.includes(corrAns);
+        return (
+          answers.includes(corrAns) &&
+          questions[questionNumber].correctAnswer.length === answers.length
+        );
       }
     );
     dispatch(
@@ -184,21 +188,25 @@ export const QuizQuestion = ({ category, questions }) => {
               Варианты ответа:
             </FormLabel>
             <FormGroup>
-              {questions[questionNumber].answerOptions.map((answer, index) => {
-                return (
-                  <FormControlLabel
-                    value={index}
-                    control={
-                      <Checkbox
-                        onChange={(e) => handleCheckBox(e, answers)}
-                        checked={answers.includes(index)}
+              <ErrorBoundary>
+                {questions[questionNumber].answerOptions.map(
+                  (answer, index) => {
+                    return (
+                      <FormControlLabel
+                        value={index}
+                        control={
+                          <Checkbox
+                            onChange={(e) => handleCheckBox(e, answers)}
+                            checked={answers.includes(index)}
+                          />
+                        }
+                        label={<Highlight>{answer}</Highlight>}
+                        key={index}
                       />
-                    }
-                    label={<Highlight>{answer}</Highlight>}
-                    key={index}
-                  />
-                );
-              })}
+                    );
+                  }
+                )}
+              </ErrorBoundary>
             </FormGroup>
             <FormHelperText sx={{ color: `${answerColor}!important` }}>
               {helperText}

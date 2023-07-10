@@ -35,13 +35,6 @@ export const QuizCard = () => {
               >
                 <Button variant='outlined'>срезать гриб</Button>
               </Link>
-              <Button
-                onClick={() => {
-                  throw new Error('I crashed!');
-                }}
-              >
-                errr
-              </Button>
             </div>
           </div>
         );
