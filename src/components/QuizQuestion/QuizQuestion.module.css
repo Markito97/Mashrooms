@@ -23,6 +23,9 @@
   font-size: 60px;
   color: #1976d2;
 }
+.textQuestion {
+  max-width: inherit;
+}
 .JS {
   color: yellow;
 }

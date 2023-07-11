@@ -1,6 +1,6 @@
 import styles from './quizCard.module.css';
 import { Button } from '@mui/material';
-import { ComplexityOfQuiz } from '../../components/ComplexityOfQuiz/ComplexityOfQuiz';
+import { QuizComplexity } from '../../components/QuizComplexity/QuizComplexity';
 import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useQuizzes } from './use-Quizzes';
@@ -21,8 +21,7 @@ export const QuizCard = () => {
             <div className={styles.header}>
               <div className={styles.nameOfQuiz}>{quiz.quizzesName}</div>
               <div className={styles.dificultyLvl}>
-                Сложность:{' '}
-                <ComplexityOfQuiz complexity={quiz.difficultyLevel} />
+                Сложность: <QuizComplexity complexity={quiz.difficultyLevel} />
               </div>
             </div>
             <div className={styles.footer}>

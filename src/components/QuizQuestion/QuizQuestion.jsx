@@ -1,31 +1,31 @@
-import styles from './QuizQuestion.module.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
-import { useEffect, useState } from 'react';
-import { Button, Container, Box } from '@mui/material';
-import { useDispatch } from 'react-redux';
-import { addAnswer } from '../../features/answers/answer-slice';
-import { resetToDefault } from '../../features/answers/answer-slice';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import FormHelperText from '@mui/material/FormHelperText';
-import Highlight from 'react-highlight';
-import Checkbox from '@mui/material/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import { useLastQuestion } from './useLastQuestion';
-import { updateTimer, resetTimer } from '../../features/timer/timer-slice';
-import { Timer } from '../Timer/Timer';
+import styles from "./QuizQuestion.module.css";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import { useEffect, useState } from "react";
+import { Button, Container, Box } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { addAnswer } from "../../features/answers/answer-slice";
+import { resetToDefault } from "../../features/answers/answer-slice";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
+import FormLabel from "@mui/material/FormLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import Highlight from "react-highlight";
+import Checkbox from "@mui/material/Checkbox";
+import FormGroup from "@mui/material/FormGroup";
+import { useLastQuestion } from "./useLastQuestion";
+import { updateTimer, resetTimer } from "../../features/timer/timer-slice";
+import { Timer } from "../Timer/Timer";
 export const QuizQuestion = ({ category, questions }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
   const [questionNumber, setQuestionNumber] = useState(0);
-  const [answerColor, setAnswerColor] = useState('white');
+  const [answerColor, setAnswerColor] = useState("white");
   const [answers, setAnswers] = useState([]);
   const [error, setError] = useState(false);
-  const [helperText, setHelperText] = useState('');
+  const [helperText, setHelperText] = useState("");
   const [isDisabled, setDisabled] = useState(false);
   const [isAnswer, setAsnwer] = useState(false);
   const [isLastQuestion, setLastQuestion] = useState(false);
@@ -33,7 +33,7 @@ export const QuizQuestion = ({ category, questions }) => {
     setAsnwer(false);
     setDisabled(false);
     setError(false);
-    setHelperText('');
+    setHelperText("");
     e.preventDefault();
     setAnswers([]);
     if (questionNumber + 1 < questions.length) {
@@ -67,7 +67,7 @@ export const QuizQuestion = ({ category, questions }) => {
     setAsnwer(false);
     setDisabled(false);
     setError(false);
-    setHelperText('');
+    setHelperText("");
     setAnswers([]);
     if (questionNumber + 1 < questions.length) {
       setQuestionNumber(questionNumber + 1);
@@ -90,8 +90,8 @@ export const QuizQuestion = ({ category, questions }) => {
     e.preventDefault();
     if (answers.length === 0) {
       setError(true);
-      setHelperText('Выберите вариант ответа!');
-      setAnswerColor('red');
+      setHelperText("Выберите вариант ответа!");
+      setAnswerColor("red");
       return;
     }
 
@@ -118,31 +118,31 @@ export const QuizQuestion = ({ category, questions }) => {
     if (isCorrectAnswer && answers.length !== 0) {
       // вынести в отдельный хук?
       setError(false);
-      setHelperText('Nice, it is correct answer!');
+      setHelperText("Nice, it is correct answer!");
       setDisabled(true);
-      setAnswerColor('green');
+      setAnswerColor("green");
       setAsnwer(true);
     } else {
       // вынести в отдельный хук?
       setError(true);
-      setHelperText('Sorry, wrong answer!');
-      setAnswerColor('red');
+      setHelperText("Sorry, wrong answer!");
+      setAnswerColor("red");
       setDisabled(true);
       setAsnwer(true);
     }
   };
   if (questions.length === 0) return null;
   if (isLastQuestion) {
-    console.log('category=>', category);
+    console.log("category=>", category);
     navigate(`/quizStatistic/${category}/${id}`);
     return null;
   }
   return (
     <div className={styles.questionBox}>
       <Box
-        display={'flex'}
-        justifyContent={'space-between'}
-        alignItems={'center'}
+        display={"flex"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
       >
         <Button
           onClick={() => {
@@ -150,7 +150,7 @@ export const QuizQuestion = ({ category, questions }) => {
             navigate(-1);
           }}
           variant='outlined'
-          sx={{ maxWidth: 'fit-content' }}
+          sx={{ maxWidth: "fit-content" }}
         >
           <ArrowBackIcon />
           Назад к выбору теста
@@ -158,33 +158,33 @@ export const QuizQuestion = ({ category, questions }) => {
         <Timer />
       </Box>
 
-      <Container sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <Container sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <h1 className={styles.questionBoxTitle}>
-          Тест на знание технологии{' '}
+          Тест на знание технологии{" "}
           <span className={styles[category]}>{category}</span>
         </h1>
         <Container
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            justifyContent: 'space-between',
+            display: "flex",
+            flexDirection: "column",
+            gap: "20px",
+            justifyContent: "space-between",
           }}
         >
           <Box
-            minWidth={'100px'}
-            minHeight={'200px'}
+            minWidth={"100px"}
+            minHeight={"200px"}
             border={1}
-            borderColor={'#1976d2'}
-            marginBottom={'20px'}
-            padding={'20px'}
+            borderColor={"#1976d2"}
+            marginBottom={"20px"}
+            padding={"20px"}
           >
             {questions[questionNumber].question}
           </Box>
           <FormControl error={error} disabled={isDisabled} size='medium'>
             <FormLabel
               id='demo-controlled-radio-buttons-group'
-              sx={{ fontSize: '30px', color: 'white' }}
+              sx={{ fontSize: "30px", color: "white" }}
             >
               Варианты ответа:
             </FormLabel>
@@ -201,7 +201,11 @@ export const QuizQuestion = ({ category, questions }) => {
                             checked={answers.includes(index)}
                           />
                         }
-                        label={<Highlight>{answer}</Highlight>}
+                        label={
+                          <Highlight>
+                            <div className={styles.textQuestion}>{answer}</div>
+                          </Highlight>
+                        }
                         key={index}
                       />
                     );

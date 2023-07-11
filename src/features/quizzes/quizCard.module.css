@@ -3,12 +3,13 @@
   min-height: 200px;
   border-radius: 8px;
   padding: 20px;
-  background-color: black;
+  background-color: #28282c;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 20px;
   border: 1px solid #1976d2;
+  color: #e2e3e7;
 }
 .header,
 .footer {
