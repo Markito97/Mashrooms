@@ -16,6 +16,7 @@ export const QuizStart = () => {
         const res = await fetch(getQuizById(id));
         if (!res.ok) setError(true);
         const data = await res.json();
+        console.log(data);
         setQuestions(data.questions);
         setCategory(data.category);
       } catch (err) {

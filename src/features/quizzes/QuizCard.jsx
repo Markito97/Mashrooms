@@ -6,12 +6,14 @@ import { useEffect } from 'react';
 import { useQuizzes } from './use-Quizzes';
 import { useDispatch } from 'react-redux';
 import { resetToDefault } from '../answers/answer-slice';
+import { CircularProgress } from '@mui/material';
+import ModalWindow from '../../components/Modal/ModalWindow';
 export const QuizCard = () => {
   const [quizzes, { status, error, qty }] = useQuizzes();
   const dispatch = useDispatch();
   return (
     <>
-      {status === 'loading' && <h2>Loading....</h2>}
+      {status === 'loading' && <CircularProgress />}
       {error && <h2>Cant fetch data</h2>}
       {quizzes.map((quiz) => {
         return (
@@ -19,7 +21,7 @@ export const QuizCard = () => {
             <div className={styles.header}>
               <div className={styles.nameOfQuiz}>{quiz.quizzesName}</div>
               <div className={styles.dificultyLvl}>
-                сложность:{' '}
+                Сложность:{' '}
                 <ComplexityOfQuiz complexity={quiz.difficultyLevel} />
               </div>
             </div>
@@ -27,14 +29,7 @@ export const QuizCard = () => {
               <div className={styles.countOfQuestions}>
                 Количество вопросов: {quiz.questions.length}
               </div>
-              <Link
-                to={`/quizStart/${quiz._id}`}
-                onClick={() => {
-                  dispatch(resetToDefault());
-                }}
-              >
-                <Button variant='outlined'>срезать гриб</Button>
-              </Link>
+              <ModalWindow quizId={quiz._id} />
             </div>
           </div>
         );

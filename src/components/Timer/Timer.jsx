@@ -6,5 +6,5 @@ import { toCorrectTime } from '../../utils/toCorrectTime';
 export const Timer = () => {
   const sec = useSelector((state) => state.timer.timer);
   let time = toCorrectTime(sec);
-  return <div className='timerContainer'>{`${time}`}</div>;
+  return <div className={styles.timerContainer}>{`${time}`}</div>;
 };

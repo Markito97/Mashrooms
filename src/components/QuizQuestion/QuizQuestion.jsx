@@ -18,7 +18,6 @@ import { useLastQuestion } from './useLastQuestion';
 import { updateTimer, resetTimer } from '../../features/timer/timer-slice';
 import { Timer } from '../Timer/Timer';
 export const QuizQuestion = ({ category, questions }) => {
-  console.log('array with questions =>>', questions);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -134,7 +133,8 @@ export const QuizQuestion = ({ category, questions }) => {
   };
   if (questions.length === 0) return null;
   if (isLastQuestion) {
-    navigate(`/quizStatistic/${id}`);
+    console.log('category=>', category);
+    navigate(`/quizStatistic/${category}/${id}`);
     return null;
   }
   return (
@@ -159,9 +159,10 @@ export const QuizQuestion = ({ category, questions }) => {
       </Box>
 
       <Container sx={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-        <h1
-          className={styles.questionBoxTitle}
-        >{`Тест на знание технологии ${category}`}</h1>
+        <h1 className={styles.questionBoxTitle}>
+          Тест на знание технологии{' '}
+          <span className={styles[category]}>{category}</span>
+        </h1>
         <Container
           sx={{
             display: 'flex',
