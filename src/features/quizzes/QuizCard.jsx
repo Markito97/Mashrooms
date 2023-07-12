@@ -1,19 +1,20 @@
-import styles from './quizCard.module.css';
-import { Button } from '@mui/material';
-import { QuizComplexity } from '../../components/QuizComplexity/QuizComplexity';
-import { Link, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useQuizzes } from './use-Quizzes';
-import { useDispatch } from 'react-redux';
-import { resetToDefault } from '../answers/answer-slice';
-import { CircularProgress } from '@mui/material';
-import ModalWindow from '../../components/Modal/ModalWindow';
+import styles from "./quizCard.module.css";
+import { Button } from "@mui/material";
+import { QuizComplexity } from "../../components/QuizComplexity/QuizComplexity";
+import { Link, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useQuizzes } from "./use-Quizzes";
+import { useDispatch } from "react-redux";
+import { CircularProgress } from "@mui/material";
+import ModalWindow from "../../components/Modal/ModalWindow";
+import { resetToDefault } from "./quizzes-slice";
 export const QuizCard = () => {
   const [quizzes, { status, error, qty }] = useQuizzes();
   const dispatch = useDispatch();
+
   return (
     <>
-      {status === 'loading' && <CircularProgress />}
+      {status === "loading" && <CircularProgress />}
       {error && <h2>Cant fetch data</h2>}
       {quizzes.map((quiz) => {
         return (

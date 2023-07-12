@@ -1,39 +1,42 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadQuiz = createAsyncThunk(
-  '@@quizzes/load-quiz',
+  "@@quizzes/load-quiz",
   async (name, { extra: { client, api } }) => {
     return client.get(api.BASE_URL + `?query=${name}`);
   }
 );
 
 const initialState = {
-  status: 'idle',
+  status: "idle",
   error: null,
   list: [],
 };
 const quizzesSlice = createSlice({
-  name: '@@quizzes',
+  name: "@@quizzes",
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    resetToDefault: (state, action) => initialState,
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadQuiz.pending, (state) => {
-        state.status = 'loading';
+        state.status = "loading";
         state.error = null;
       })
       .addCase(loadQuiz.rejected, (state, action) => {
-        state.status = 'rejected';
+        state.status = "rejected";
         state.error = action;
       })
       .addCase(loadQuiz.fulfilled, (state, action) => {
-        state.status = 'recieved';
+        state.status = "recieved";
         state.list = action.payload.data;
       });
   },
 });
 
 export const quizzesReducer = quizzesSlice.reducer;
+export const { resetToDefault } = quizzesSlice.actions;
 
 export const selectQuizzesInfo = (state) => ({
   status: state.quizzes.status,

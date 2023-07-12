@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component } from "react";
 class ErrorBoundary extends Component {
   state = {
     error: null,
@@ -7,8 +7,8 @@ class ErrorBoundary extends Component {
     return { error };
   }
   render() {
-    console.log('err');
     const { error } = this.state;
+    console.log("err", error);
 
     if (error) {
       return (

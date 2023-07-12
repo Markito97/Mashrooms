@@ -133,9 +133,7 @@ export const QuizQuestion = ({ category, questions }) => {
   };
   if (questions.length === 0) return null;
   if (isLastQuestion) {
-    console.log("category=>", category);
     navigate(`/quizStatistic/${category}/${id}`);
-    return null;
   }
   return (
     <div className={styles.questionBox}>
@@ -172,14 +170,12 @@ export const QuizQuestion = ({ category, questions }) => {
           }}
         >
           <Box
-            minWidth={"100px"}
-            minHeight={"200px"}
             border={1}
             borderColor={"#1976d2"}
             marginBottom={"20px"}
             padding={"20px"}
           >
-            {questions[questionNumber].question}
+            <Highlight>{questions[questionNumber].question}</Highlight>
           </Box>
           <FormControl error={error} disabled={isDisabled} size='medium'>
             <FormLabel
@@ -189,29 +185,22 @@ export const QuizQuestion = ({ category, questions }) => {
               Варианты ответа:
             </FormLabel>
             <FormGroup>
-              <ErrorBoundary>
-                {questions[questionNumber].answerOptions.map(
-                  (answer, index) => {
-                    return (
-                      <FormControlLabel
-                        value={index}
-                        control={
-                          <Checkbox
-                            onChange={(e) => handleCheckBox(e, answers)}
-                            checked={answers.includes(index)}
-                          />
-                        }
-                        label={
-                          <Highlight>
-                            <div className={styles.textQuestion}>{answer}</div>
-                          </Highlight>
-                        }
-                        key={index}
+              {questions[questionNumber].answerOptions.map((answer, index) => {
+                console.log(answer);
+                return (
+                  <FormControlLabel
+                    value={index}
+                    control={
+                      <Checkbox
+                        onChange={(e) => handleCheckBox(e, answers)}
+                        checked={answers.includes(index)}
                       />
-                    );
-                  }
-                )}
-              </ErrorBoundary>
+                    }
+                    label={<Highlight>{answer}</Highlight>}
+                    key={index}
+                  />
+                );
+              })}
             </FormGroup>
             <FormHelperText sx={{ color: `${answerColor}!important` }}>
               {helperText}

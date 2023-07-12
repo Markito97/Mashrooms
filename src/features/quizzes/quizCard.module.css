@@ -25,3 +25,13 @@
   font-weight: 700;
   font-size: 20px;
 }
+@media (max-width: 930px) {
+  .quizCardContainer {
+    min-width: 700px;
+  }
+}
+@media (max-width: 725px) {
+  .quizCardContainer {
+    min-width: -webkit-fill-available;
+  }
+}
