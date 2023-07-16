@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { Login } from "../pages/Login/Login.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "../components/Layout/Layout";
 import { Main } from "../pages/Main/Main";
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/quizStatistic/:category/:id",
         element: <QuizStatistic />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
       },
     ],
   },
