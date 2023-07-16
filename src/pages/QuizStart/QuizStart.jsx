@@ -1,12 +1,18 @@
-import { useParams } from 'react-router-dom';
-import { QuizQuestion } from '../../components/QuizQuestion/QuizQuestion';
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { getQuizById } from '../../config';
-import { CircularProgress } from '@mui/material';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { QuizQuestion } from "../../components/QuizQuestion/QuizQuestion";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { getQuizById } from "../../config";
+import { CircularProgress } from "@mui/material";
+import Timer from "../../features/timer/Timer";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Box, Button } from "@mui/material";
+import styles from "./quizStart.module.css";
+import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 export const QuizStart = () => {
+  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
-  const [category, setCategory] = useState('');
+  const [category, setCategory] = useState("");
   const [hasError, setError] = useState(false);
   const { id } = useParams();
   // интересный момент с работой catch
@@ -26,7 +32,7 @@ export const QuizStart = () => {
   }, [id]);
 
   if (hasError) {
-    return <h2>An Error Occured</h2>;
+    return <ErrorBoundary />;
   }
   return (
     <>
@@ -35,6 +41,29 @@ export const QuizStart = () => {
           <CircularProgress size={100} />
         </h2>
       )}
+      <div className={styles.topPart}>
+        <Box
+          display={"flex"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          <Link to={`/quizzes/${category}`}>
+            <Button
+              onClick={() => {
+                dispatch(resetToDefault());
+                navigate();
+              }}
+              variant='outlined'
+              sx={{ maxWidth: "fit-content" }}
+            >
+              <ArrowBackIcon />
+              Назад к выбору теста
+            </Button>
+          </Link>
+        </Box>
+        <Timer />
+      </div>
+
       <QuizQuestion category={category} questions={questions} />
     </>
   );

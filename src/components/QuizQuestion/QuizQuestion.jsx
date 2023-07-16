@@ -1,12 +1,12 @@
 import styles from "./QuizQuestion.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button, Container, Box } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addAnswer } from "../../features/answers/answer-slice";
 import { resetToDefault } from "../../features/answers/answer-slice";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -15,8 +15,8 @@ import Highlight from "react-highlight";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import { useLastQuestion } from "./useLastQuestion";
-import { updateTimer, resetTimer } from "../../features/timer/timer-slice";
-import { Timer } from "../Timer/Timer";
+import { stopTimer } from "../../features/timer/timer-slice";
+
 export const QuizQuestion = ({ category, questions }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,15 +40,6 @@ export const QuizQuestion = ({ category, questions }) => {
       setQuestionNumber(questionNumber + 1);
     }
   };
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      dispatch(updateTimer());
-    }, 1000);
-    return () => {
-      dispatch(resetTimer());
-      clearInterval(timerId);
-    };
-  }, []);
   const handleSkipQuestion = (e, questionNumber) => {
     dispatch(
       addAnswer({
@@ -123,39 +114,23 @@ export const QuizQuestion = ({ category, questions }) => {
       setAnswerColor("green");
       setAsnwer(true);
     } else {
+      // пока убрал это, чтоб не было подвестки, что чел ошибся.
       // вынести в отдельный хук?
-      setError(true);
-      setHelperText("Sorry, wrong answer!");
-      setAnswerColor("red");
+      // setError(true);
+      // setHelperText("Sorry, wrong answer!");
+      // setAnswerColor("red");
       setDisabled(true);
       setAsnwer(true);
     }
   };
   if (questions.length === 0) return null;
   if (isLastQuestion) {
+    dispatch(stopTimer());
     navigate(`/quizStatistic/${category}/${id}`);
   }
+
   return (
     <div className={styles.questionBox}>
-      <Box
-        display={"flex"}
-        justifyContent={"space-between"}
-        alignItems={"center"}
-      >
-        <Button
-          onClick={() => {
-            dispatch(resetToDefault());
-            navigate(-1);
-          }}
-          variant='outlined'
-          sx={{ maxWidth: "fit-content" }}
-        >
-          <ArrowBackIcon />
-          Назад к выбору теста
-        </Button>
-        <Timer />
-      </Box>
-
       <Container sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
         <h1 className={styles.questionBoxTitle}>
           Тест на знание технологии{" "}
@@ -186,7 +161,6 @@ export const QuizQuestion = ({ category, questions }) => {
             </FormLabel>
             <FormGroup>
               {questions[questionNumber].answerOptions.map((answer, index) => {
-                console.log(answer);
                 return (
                   <FormControlLabel
                     value={index}

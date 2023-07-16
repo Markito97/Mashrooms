@@ -33,7 +33,6 @@ export const AnswerStatistics = ({ category }) => {
     <>
       <Box
         sx={{
-          marginTop: "25px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",

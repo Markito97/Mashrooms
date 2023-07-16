@@ -7,7 +7,6 @@ import { resetToDefault } from "../../features/quizzes/quizzes-slice";
 const Quizzes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log("СМОНТИРОВАЛСЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯЯ");
     return () => {
       dispatch(resetToDefault());
     };

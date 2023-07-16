@@ -1,24 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { useSelector } from 'react-redux';
+import { createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 const initialState = {
   timer: 0,
-  result: 0,
+  stop: false,
 };
 
 const timerSlice = createSlice({
-  name: '@@timer',
+  name: "@@timer",
   initialState: initialState,
   reducers: {
     updateTimer: (state, action) => {
-      state.timer += 1;
+      state.timer = action.payload;
     },
     resetTimer: (state, action) => {
-      state.result = state.timer;
       state.timer = 0;
+      state.stop = false;
+    },
+    stopTimer: (state, action) => {
+      state.stop = true;
     },
   },
 });
 
-export const { updateTimer, resetTimer } = timerSlice.actions;
+export const { updateTimer, resetTimer, stopTimer } = timerSlice.actions;
 export const timerReducer = timerSlice.reducer;
-export const selectTimer = (state) => state.timer.result;
+export const selectTimer = (state) => state.timer.timer;
+export const selectStop = (state) => state.timer.stop;
