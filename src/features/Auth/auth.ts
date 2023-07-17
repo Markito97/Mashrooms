@@ -4,10 +4,6 @@ export const authApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:2995",
   }),
-  endpoints: (build) => ({
-    login: build.query({
-      query: () => ({ url: "auth/google/login" }),
-    }),
-  }),
+  endpoints: (build) => ({}),
 });
-export const { useLazyLoginQuery } = authApi;
+export const {} = authApi;
