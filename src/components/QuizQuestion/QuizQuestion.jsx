@@ -29,6 +29,15 @@ export const QuizQuestion = ({ category, questions }) => {
   const [isDisabled, setDisabled] = useState(false);
   const [isAnswer, setAsnwer] = useState(false);
   const [isLastQuestion, setLastQuestion] = useState(false);
+
+  useEffect(() => {
+    console.log("внутри эффекта");
+    if (isLastQuestion) {
+      dispatch(stopTimer());
+      navigate(`/quizStatistic/${category}/${id}`);
+    }
+  }, [isLastQuestion]);
+
   const handleNextQuestion = (e, questionNumber) => {
     setAsnwer(false);
     setDisabled(false);
@@ -124,10 +133,11 @@ export const QuizQuestion = ({ category, questions }) => {
     }
   };
   if (questions.length === 0) return null;
-  if (isLastQuestion) {
-    dispatch(stopTimer());
-    navigate(`/quizStatistic/${category}/${id}`);
-  }
+
+  // if (isLastQuestion) {
+  //   dispatch(stopTimer());
+  //   navigate(`/quizStatistic/${category}/${id}`);
+  // }
 
   return (
     <div className={styles.questionBox}>

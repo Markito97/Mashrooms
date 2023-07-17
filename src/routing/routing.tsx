@@ -1,6 +1,7 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Login } from "../pages/Login/Login.jsx";
+import { PersonalAccount } from "../pages/PersonalAccount/PersonalAccount.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "../components/Layout/Layout";
 import { Main } from "../pages/Main/Main";
@@ -10,6 +11,7 @@ import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
 import { QuizStart } from "../pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/personalAccount",
+        element: <PersonalAccount />,
       },
     ],
   },
