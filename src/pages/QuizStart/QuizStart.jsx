@@ -37,34 +37,44 @@ export const QuizStart = () => {
   return (
     <>
       {!questions.length && (
-        <h2>
-          <CircularProgress size={100} />
-        </h2>
-      )}
-      <div className={styles.topPart}>
-        <Box
-          display={"flex"}
-          justifyContent={"space-between"}
-          alignItems={"center"}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
         >
-          <Link to={`/quizzes/${category}`}>
-            <Button
-              onClick={() => {
-                dispatch(resetToDefault());
-                navigate();
-              }}
-              variant='outlined'
-              sx={{ maxWidth: "fit-content" }}
+          <CircularProgress size={100} />
+        </div>
+      )}
+      {Boolean(questions.length) && (
+        <>
+          <div className={styles.topPart}>
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
             >
-              <ArrowBackIcon />
-              Назад к выбору теста
-            </Button>
-          </Link>
-        </Box>
-        <Timer />
-      </div>
-
-      <QuizQuestion category={category} questions={questions} />
+              <Link to={`/quizzes/${category}`}>
+                <Button
+                  onClick={() => {
+                    dispatch(resetToDefault());
+                    navigate();
+                  }}
+                  variant='outlined'
+                  sx={{ maxWidth: "fit-content" }}
+                >
+                  <ArrowBackIcon />
+                  Назад к выбору теста
+                </Button>
+              </Link>
+            </Box>
+            <Timer />
+          </div>
+          <QuizQuestion category={category} questions={questions} />
+        </>
+      )}
     </>
   );
 };

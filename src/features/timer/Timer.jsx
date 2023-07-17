@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateTimer } from "./timer-slice";
 import { toCorrectTime } from "../../utils/toCorrectTime";
 import { selectStop } from "./timer-slice";
-const Timer = (isLastQuestion) => {
+const Timer = () => {
   const isStop = useSelector((state) => selectStop(state));
   const dispatch = useDispatch();
   const [seconds, setSeconds] = useState(0);

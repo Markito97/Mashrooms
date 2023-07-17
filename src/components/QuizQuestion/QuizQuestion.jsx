@@ -31,7 +31,6 @@ export const QuizQuestion = ({ category, questions }) => {
   const [isLastQuestion, setLastQuestion] = useState(false);
 
   useEffect(() => {
-    console.log("внутри эффекта");
     if (isLastQuestion) {
       dispatch(stopTimer());
       navigate(`/quizStatistic/${category}/${id}`);
