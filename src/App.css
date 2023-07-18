@@ -2,6 +2,7 @@
   margin: 0 auto;
   max-width: 1200px;
   height: 100%;
+  /* position: relative; */
 }
 #root {
   display: flex;
@@ -46,7 +47,7 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   color: white;
 }
 
@@ -89,4 +90,7 @@ ul {
 }
 li {
   list-style-type: none;
+}
+code {
+  white-space: pre-wrap;
 }

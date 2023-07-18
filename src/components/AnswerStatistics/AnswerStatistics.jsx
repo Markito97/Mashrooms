@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Box, Button } from '@mui/material';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getCorrectAnswerPercent } from '../../utils/getCorrectAnswerPercent';
-import styles from './answerStatistics.module.css';
-import { StatisticsBox } from './StatisticsBox';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { resetToDefault } from '../../features/answers/answer-slice';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { selectTimer, resetTimer } from '../../features/timer/timer-slice';
-import { toCorrectTime } from '../../utils/toCorrectTime';
+import * as React from "react";
+import { Box, Button } from "@mui/material";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCorrectAnswerPercent } from "../../utils/getCorrectAnswerPercent";
+import styles from "./answerStatistics.module.css";
+import { StatisticsBox } from "./StatisticsBox";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { resetToDefault } from "../../features/answers/answer-slice";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { selectTimer, resetTimer } from "../../features/timer/timer-slice";
+import { toCorrectTime } from "../../utils/toCorrectTime";
 export const AnswerStatistics = ({ category }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,11 +33,10 @@ export const AnswerStatistics = ({ category }) => {
     <>
       <Box
         sx={{
-          marginTop: '25px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          gap: '10px',
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          gap: "10px",
         }}
       >
         <Button
@@ -46,9 +45,9 @@ export const AnswerStatistics = ({ category }) => {
             navigate(-2);
           }}
           variant='outlined'
-          sx={{ maxWidth: 'fit-content' }}
+          sx={{ maxWidth: "fit-content" }}
         >
-          {' '}
+          {" "}
           <ArrowBackIcon />
           Назад к выбору теста
         </Button>
