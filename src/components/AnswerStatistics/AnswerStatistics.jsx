@@ -49,7 +49,7 @@ export const AnswerStatistics = ({ category }) => {
         >
           {" "}
           <ArrowBackIcon />
-          Назад к выбору теста
+          Назад к выбору квиза
         </Button>
         <div>Результат теста на знание технологии {category}</div>
         <div>{`Score: ${correctAnswerCounter} of ${answers.length}`}</div>

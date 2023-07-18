@@ -4,6 +4,7 @@ import * as api from "../config";
 import { quizzesReducer } from "../features/quizzes/quizzes-slice";
 import { answersReducer } from "../features/answers/answer-slice";
 import { timerReducer } from "../features/timer/timer-slice";
+import { authReducer } from "../redux/slices/auth.slice";
 import { authApi } from "./auth";
 
 export const store = configureStore({
@@ -12,6 +13,7 @@ export const store = configureStore({
     answers: answersReducer,
     timer: timerReducer,
     [authApi.reducerPath]: authApi.reducer,
+    auth: authReducer,
   },
   devTools: true,
   middleware: (getDefaultMiddleWare) =>
