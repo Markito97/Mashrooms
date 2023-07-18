@@ -1,12 +1,9 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
 import { Login } from "../pages/Login/Login.jsx";
-import { PersonalAccount } from "../pages/PersonalAccount/PersonalAccount.jsx";
+import { Profile } from "../pages/Profile/Profile";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "../components/Layout/Layout";
 import { Main } from "../pages/Main/Main";
 import { Quizzes } from "../pages/Quizzes/Quizzes";
-import { Quiz } from "../pages/QuizzesList";
 import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
 import { QuizStart } from "../pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
@@ -43,8 +40,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/personalAccount",
-        element: <PersonalAccount />,
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },
