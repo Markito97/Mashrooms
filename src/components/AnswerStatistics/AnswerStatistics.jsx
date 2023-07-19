@@ -10,7 +10,12 @@ import { resetToDefault } from "../../features/answers/answer-slice";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { selectTimer, resetTimer } from "../../features/timer/timer-slice";
 import { toCorrectTime } from "../../utils/toCorrectTime";
+import { colorTokens } from "@/theme";
+import { useTheme } from "@mui/material";
+
 export const AnswerStatistics = ({ category }) => {
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const answers = useSelector((state) => state.answers.list);
@@ -44,11 +49,10 @@ export const AnswerStatistics = ({ category }) => {
             dispatch(resetToDefault());
             navigate(-2);
           }}
-          variant='outlined'
-          sx={{ maxWidth: "fit-content" }}
+          variant='contained'
+          sx={{ bgcolor: colors.third[100], maxWidth: "fit-content" }}
+          startIcon={<ArrowBackIcon />}
         >
-          {" "}
-          <ArrowBackIcon />
           Назад к выбору квиза
         </Button>
         <div>Результат теста на знание технологии {category}</div>
