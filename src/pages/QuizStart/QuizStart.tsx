@@ -1,6 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { QuizQuestion } from "../../components/QuizQuestion/QuizQuestion";
-import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getQuizById } from "../../config";
 import { CircularProgress } from "@mui/material";
@@ -9,20 +8,19 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Button } from "@mui/material";
 import styles from "./quizStart.module.css";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
+
 export const QuizStart = () => {
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState("");
   const [hasError, setError] = useState(false);
   const { id } = useParams();
-  // интересный момент с работой catch
   useEffect(() => {
     (async () => {
       try {
         const res = await fetch(getQuizById(id));
         if (!res.ok) setError(true);
         const data = await res.json();
-        console.log(data);
         setQuestions(data.questions);
         setCategory(data.category);
       } catch (err) {
@@ -31,9 +29,7 @@ export const QuizStart = () => {
     })();
   }, [id]);
 
-  if (hasError) {
-    return <ErrorBoundary />;
-  }
+  if (hasError) return <ErrorBoundary />;
   return (
     <>
       {!questions.length && (
@@ -51,18 +47,14 @@ export const QuizStart = () => {
       {Boolean(questions.length) && (
         <>
           <div className={styles.topPart}>
-            <Box
-              display={"flex"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-            >
+            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
               <Link to={`/quizzes/${category}`}>
                 <Button
                   onClick={() => {
                     dispatch(resetToDefault());
                     navigate();
                   }}
-                  variant='outlined'
+                  variant="outlined"
                   sx={{ maxWidth: "fit-content" }}
                 >
                   <ArrowBackIcon />

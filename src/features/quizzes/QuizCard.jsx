@@ -1,16 +1,11 @@
 import styles from "./quizCard.module.css";
-import { Button } from "@mui/material";
 import { QuizComplexity } from "../../components/QuizComplexity/QuizComplexity";
-import { Link, useParams } from "react-router-dom";
-import { useEffect } from "react";
 import { useQuizzes } from "./use-Quizzes";
-import { useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
 import ModalWindow from "../../components/Modal/ModalWindow";
-import { resetToDefault } from "./quizzes-slice";
+
 export const QuizCard = () => {
-  const [quizzes, { status, error, qty }] = useQuizzes();
-  const dispatch = useDispatch();
+  const [quizzes, { status, error }] = useQuizzes();
 
   return (
     <>

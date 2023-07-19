@@ -4,28 +4,31 @@ import { QuizTopic } from "../../components/QuizTopic/QuizTopic";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { resetToDefault } from "../../features/quizzes/quizzes-slice";
+
 const Quizzes = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     return () => {
       dispatch(resetToDefault());
     };
   }, []);
+
   return (
     <div className={styles.quizesWrapper}>
-      <Link to={"/quizzes/JS"}>
-        <QuizTopic quizType='JavaScript' color='yelow' />
-      </Link>
-      <Link to={"/quizzes/React"}>
-        <QuizTopic quizType='React' color='white-blue' />
-      </Link>
-      <Link to={"/quizzes/TS"}>
-        <QuizTopic quizType='TypeScript' color='blue' />
-      </Link>
-      <Link to={"/quizzes/HTML"}>
-        <QuizTopic quizType='HTML/CSS' color='red' />
-      </Link>
+      {quizes.map((quiz, index) => (
+        <Link to={quiz.path} key={index}>
+          <QuizTopic quizType={quiz.quizType} color={quiz.color} />
+        </Link>
+      ))}
     </div>
   );
 };
 export { Quizzes };
+
+const quizes = [
+  { path: "/quizzes/JS", color: "yelow", quizType: "JavaScript" },
+  { path: "/quizzes/React", color: "white-blue", quizType: "React" },
+  { path: "/quizzes/TS", color: "blue", quizType: "TypeScript" },
+  { path: "/quizzes/HTML", color: "red", quizType: "HTML/CSS" },
+];
