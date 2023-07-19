@@ -4,7 +4,6 @@ import { ReactComponent as MashroomError1 } from "../../assets/icons/mashroomErr
 import { ReactComponent as MashroomError2 } from "../../assets/icons/mashroomError2.svg";
 import { ReactComponent as MashroomError3 } from "../../assets/icons/mashroomError3.svg";
 import { Box, Button, useTheme } from "@mui/material";
-import Container from "@mui/material/Container";
 import { colorTokens } from "@/theme";
 
 export default function ErrorBoundary() {
