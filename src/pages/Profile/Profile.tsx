@@ -1,21 +1,10 @@
 import { useLazyLogoutQuery } from "@/redux/auth";
 import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
-  const [handleLogout] = useLazyLogoutQuery();
-
-  const logout = async (): Promise<void> => {
-    await handleLogout(void 0).unwrap();
-  };
-
-  return (
-    <div>
-      Profile
-      <Button onClick={logout} variant="outlined">
-        Logout
-      </Button>
-    </div>
-  );
+  const { name } = useSelector((state: any) => state.auth.user.user);
+  return <div>{`Привет, ${name}`}</div>;
 };
 
 export default Profile;

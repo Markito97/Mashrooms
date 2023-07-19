@@ -1,10 +1,16 @@
 import { Button, Box, Typography, styled, useTheme } from "@mui/material";
 import { colorTokens } from "@/theme";
 import GoogleIcon from "@mui/icons-material/Google";
-
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 const Login = () => {
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
+  const isAuth = useSelector((state: any) => state.auth.user);
+  if (isAuth) {
+    return <Navigate to={"/profile"} />;
+  }
 
   return (
     <LoginWrapper>
@@ -21,14 +27,14 @@ const Login = () => {
       >
         <Box sx={{ display: "flex", alignItems: "center", columnGap: "16px" }}>
           <GoogleIcon />
-          <Typography variant="h5">Войти с помошью грибника</Typography>
+          <Typography variant='h5'>Войти с помошью грибника</Typography>
         </Box>
         <Button
-          variant="contained"
+          variant='contained'
           sx={{
             bgcolor: colors.third[100],
           }}
-          href="http://localhost:2995/auth/google/login"
+          href='http://localhost:2995/auth/google/login'
         >
           В корзинку
         </Button>

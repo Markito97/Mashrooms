@@ -5,11 +5,14 @@ import { getQuizById } from "../../config";
 import { CircularProgress } from "@mui/material";
 import Timer from "../../features/timer/Timer";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Button } from "@mui/material";
+import { Box, Button, useTheme } from "@mui/material";
 import styles from "./quizStart.module.css";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
+import { colorTokens } from "@/theme";
 
 export const QuizStart = () => {
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
   const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState("");
@@ -47,17 +50,21 @@ export const QuizStart = () => {
       {Boolean(questions.length) && (
         <>
           <div className={styles.topPart}>
-            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}>
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+            >
               <Link to={`/quizzes/${category}`}>
                 <Button
                   onClick={() => {
                     dispatch(resetToDefault());
                     navigate();
                   }}
-                  variant="outlined"
-                  sx={{ maxWidth: "fit-content" }}
+                  variant='contained'
+                  sx={{ bgcolor: colors.third[100] }}
+                  startIcon={<ArrowBackIcon />}
                 >
-                  <ArrowBackIcon />
                   Назад к выбору теста
                 </Button>
               </Link>
