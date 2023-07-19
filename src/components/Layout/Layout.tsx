@@ -1,25 +1,19 @@
-import { Link, Outlet } from 'react-router-dom';
-import { Header } from '../Header/Header';
-import { Footer } from '../Footer/Footer';
-import styles from './Layout.module.css';
+import { Outlet } from "react-router-dom";
+import { Header } from "../Header/Header";
+import styles from "./Layout.module.css";
+import { Container } from "@mui/material";
+import { Footer } from "../Footer/Footer";
+
 const Layout = () => {
   return (
     <div className={styles.layoutWrapper}>
-      <header>
-        <div className='container'>
-          <Header />
-        </div>
-      </header>
+      <Header />
       <main className={styles.main}>
-        <div className='container'>
-          {/* <div className={styles.outlerWrapper}> */}
+        <Container maxWidth="desktop">
           <Outlet />
-          {/* </div> */}
-        </div>
+        </Container>
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };

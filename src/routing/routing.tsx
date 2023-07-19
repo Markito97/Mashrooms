@@ -1,52 +1,63 @@
-import { Login } from "../pages/Login/Login.jsx";
-import { Profile } from "../pages/Profile/Profile";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "../components/Layout/Layout";
-import { Main } from "../pages/Main/Main";
-import { Quizzes } from "../pages/Quizzes/Quizzes";
+import { Main } from "@/pages/Main/Main";
+import { Quizzes } from "@/pages/Quizzes/Quizzes";
 import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
-import { QuizStart } from "../pages/QuizStart/QuizStart";
+import { QuizStart } from "@/pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary.jsx";
 import { RequireAuth } from "../hoc/RequireAuth.jsx";
-import { useHandleSessionQuery, useLazyLogoutQuery } from "../redux/auth.js";
-import { useDispatch } from "react-redux";
-import { signin, signout } from "../redux/slices/auth.slice.js";
+import { withLazyLoadingComponent } from "@/hoc/withLazyComponent.js";
+import { lazy } from "react";
+
+const LazyLogin = withLazyLoadingComponent(lazy(() => import("../pages/Login/Login")));
+const LazyProfile = withLazyLoadingComponent(lazy(() => import("../pages/Profile/Profile")));
+
+enum APP_ROUTES {
+  ROOT = "/",
+  QUIZZES = "quizzes",
+  QUIZZES_TYPE = "/quizzes/:type",
+  QUIZ_START_ID = "/quizStart/:id",
+  QUIZ_STAT_CATEG_ID = "/quizStatistic/:category/:id",
+  LOGIN = "/login",
+  PROFILE = "/profile",
+}
+
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: APP_ROUTES.ROOT,
     element: <Layout />,
     errorElement: <ErrorBoundary />,
     children: [
       {
-        path: "/main",
+        index: true,
         element: <Main />,
       },
       {
-        path: "/quizzes",
+        path: APP_ROUTES.QUIZZES,
         element: <Quizzes />,
       },
       {
-        path: "/quizzes/:type",
+        path: APP_ROUTES.QUIZZES_TYPE,
         element: <QuizzesList />,
       },
       {
-        path: "/quizStart/:id",
+        path: APP_ROUTES.QUIZ_START_ID,
         element: <QuizStart />,
       },
       {
-        path: "/quizStatistic/:category/:id",
+        path: APP_ROUTES.QUIZ_STAT_CATEG_ID,
         element: <QuizStatistic />,
       },
       {
-        path: "/login",
-        element: <Login />,
+        path: APP_ROUTES.LOGIN,
+        element: <LazyLogin />,
       },
       {
-        path: "/profile",
+        path: APP_ROUTES.PROFILE,
         element: (
           <RequireAuth>
-            <Profile />
+            <LazyProfile />
           </RequireAuth>
         ),
       },

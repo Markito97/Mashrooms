@@ -2,17 +2,24 @@ import { Link, useParams } from "react-router-dom";
 import { getTypeOfPage } from "../../utils/getTypeOfPage";
 import styles from "./quizzesList.module.css";
 import { QuizCard } from "../../features/quizzes/QuizCard";
-import { useDispatch } from "react-redux";
-import { Button } from "@mui/material";
+import { Button, useTheme } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { colorTokens } from "@/theme";
+
 export const QuizzesList = () => {
   const { type } = useParams();
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
   const typeOfPage = getTypeOfPage(type);
+
   return (
     <div className={styles.quizzesPageWrapper}>
       <Link to={`/quizzes`} style={{ marginRight: "auto" }}>
-        <Button variant='outlined' sx={{ maxWidth: "fit-content" }}>
-          <ArrowBackIcon />
+        <Button
+          variant="contained"
+          sx={{ bgcolor: colors.third[100] }}
+          startIcon={<ArrowBackIcon />}
+        >
           Назад к выбору теста
         </Button>
       </Link>

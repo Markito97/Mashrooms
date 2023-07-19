@@ -1,23 +1,68 @@
-import styles from "./header.module.css";
+import AppBar from "@mui/material/AppBar";
+import Button from "@mui/material/Button";
+import { Box, Container, styled, useTheme } from "@mui/material";
 import { HeaderLogo } from "./HeaderLogo";
-// import { Button } from '../ButtonControl/Button';
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
+import { colorTokens } from "../../theme";
+import { useLazyLogoutQuery } from "@/redux/auth";
+import { useSelector } from "react-redux";
+
 export const Header = () => {
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
+  const [handleLogout] = useLazyLogoutQuery();
+  const isAuth = useSelector((state: any) => state.auth.user);
+
+  const logout = async (): Promise<void> => {
+    await handleLogout(void 0).unwrap();
+  };
+
   return (
-    <div className={styles.headerWrapper}>
-      <Link to={"/main"}>
-        <HeaderLogo />
-      </Link>
-      <Link to={"/main"}>
-        <Button variant='outlined'>главная</Button>
-      </Link>
-      <Link to={"/profile"}>
-        <Button variant='outlined'>Личная страница</Button>
-      </Link>
-      <Link to={"/login"}>
-        <Button variant='outlined'>Регистрация</Button>
-      </Link>
-    </div>
+    <AppBar
+      position='static'
+      sx={{ bgcolor: "primary.main", backgroundImage: "none" }}
+    >
+      <Container maxWidth='desktop'>
+        <AppBarContent>
+          <HeaderLogo />
+          {isAuth ? (
+            <Link to={"/"}>
+              <Button
+                onClick={logout}
+                variant='contained'
+                sx={{
+                  whiteSpace: "nowrap",
+                  bgcolor: colors.third[100],
+                  color: "white",
+                }}
+              >
+                Выйти из корзинки
+              </Button>
+            </Link>
+          ) : (
+            <Link to={"/login"}>
+              <Button
+                variant='contained'
+                sx={{
+                  whiteSpace: "nowrap",
+                  bgcolor: colors.third[100],
+                  color: "white",
+                }}
+              >
+                В корзинку
+              </Button>
+            </Link>
+          )}
+        </AppBarContent>
+      </Container>
+    </AppBar>
   );
 };
+
+const AppBarContent = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  paddingTop: "8px",
+  paddingBottom: "8px",
+}));
