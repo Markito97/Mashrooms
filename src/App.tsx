@@ -4,9 +4,11 @@ import "../node_modules/highlight.js/styles/atom-one-dark-reasonable.css";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { colorTokens, getDesignTokens } from "./theme";
 import { useEffect, useMemo, useState } from "react";
+import { useHandleSessionQuery } from "./redux/auth";
 
 function App() {
   const [mode, setMode] = useState<"light" | "dark">("dark");
+  const { data } = useHandleSessionQuery();
 
   const colorMode = useMemo(
     () => ({
