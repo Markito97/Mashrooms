@@ -5,10 +5,15 @@ import { ReactComponent as MashroomError2 } from "../../assets/icons/mashroomErr
 import { ReactComponent as MashroomError3 } from "../../assets/icons/mashroomError3.svg";
 import { Box, Button, useTheme } from "@mui/material";
 import { colorTokens } from "@/theme";
-
 export default function ErrorBoundary() {
-  const errorMashrooms = [<MashroomError1 />, <MashroomError2 />, <MashroomError3 />];
-  const [pictureNumber, setPicture] = useState(Math.floor(Math.random() * errorMashrooms.length));
+  const errorMashrooms = [
+    <MashroomError1 />,
+    <MashroomError2 />,
+    <MashroomError3 />,
+  ];
+  const [pictureNumber, setPicture] = useState(
+    Math.floor(Math.random() * errorMashrooms.length)
+  );
 
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
@@ -19,11 +24,11 @@ export default function ErrorBoundary() {
       sx={{
         color: "white",
         maxWidth: "100%",
-        // height: "100vh",
+        height: "100vh",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#2e2e2e",
+        backgroundColor: "#rgb(25, 28, 33)",
       }}
     >
       <Box
@@ -36,7 +41,9 @@ export default function ErrorBoundary() {
         }}
       >
         <div
-          onClick={() => setPicture(Math.floor(Math.random() * errorMashrooms.length))}
+          onClick={() =>
+            setPicture(Math.floor(Math.random() * errorMashrooms.length))
+          }
           style={{ cursor: "pointer" }}
         >
           {errorMashrooms[pictureNumber]}
@@ -44,7 +51,10 @@ export default function ErrorBoundary() {
 
         <div>Произошла ошибка</div>
         <Link to={"/quizzes"}>
-          <Button variant="outlined" sx={{ maxWidth: "fit-content" }}>
+          <Button
+            variant='contained'
+            sx={{ bgcolor: colors.third[100], maxWidth: "fit-content" }}
+          >
             Вернуться на главную
           </Button>
         </Link>

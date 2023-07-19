@@ -1,12 +1,17 @@
 import styles from "./QuizQuestion.module.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
-import { useEffect, useMemo, useState } from "react";
-import { Button, Container, Box } from "@mui/material";
+import { useEffect, useState } from "react";
+import {
+  Button,
+  Container,
+  Box,
+  useTheme,
+  RadioGroup,
+  Radio,
+} from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addAnswer } from "../../features/answers/answer-slice";
-import { resetToDefault } from "../../features/answers/answer-slice";
-
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -16,6 +21,7 @@ import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import { useLastQuestion } from "./useLastQuestion";
 import { stopTimer } from "../../features/timer/timer-slice";
+import { colorTokens } from "@/theme";
 
 export const QuizQuestion = ({ category, questions }) => {
   const dispatch = useDispatch();
@@ -29,6 +35,9 @@ export const QuizQuestion = ({ category, questions }) => {
   const [isDisabled, setDisabled] = useState(false);
   const [isAnswer, setAsnwer] = useState(false);
   const [isLastQuestion, setLastQuestion] = useState(false);
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
+  const [radioValue, setValue] = useState(0);
 
   useEffect(() => {
     if (isLastQuestion) {
@@ -72,7 +81,10 @@ export const QuizQuestion = ({ category, questions }) => {
       setQuestionNumber(questionNumber + 1);
     }
   };
-
+  const handleRadio = (event, prevAnswer) => {
+    setValue(event.target.value);
+    setAnswers([Number(event.target.value)]);
+  };
   const handleCheckBox = (event, prevAnswers) => {
     if (prevAnswers.includes(Number(event.target.value))) {
       setAnswers(
@@ -133,11 +145,6 @@ export const QuizQuestion = ({ category, questions }) => {
   };
   if (questions.length === 0) return null;
 
-  // if (isLastQuestion) {
-  //   dispatch(stopTimer());
-  //   navigate(`/quizStatistic/${category}/${id}`);
-  // }
-
   return (
     <div className={styles.questionBox}>
       <Container sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -164,48 +171,88 @@ export const QuizQuestion = ({ category, questions }) => {
           <FormControl error={error} disabled={isDisabled} size='medium'>
             <FormLabel
               id='demo-controlled-radio-buttons-group'
-              sx={{ fontSize: "30px", color: "white" }}
+              sx={{
+                fontSize: "30px",
+                color: `${colors.third[100]} !important`,
+              }}
             >
               Варианты ответа:
             </FormLabel>
-            <FormGroup>
-              {questions[questionNumber].answerOptions.map((answer, index) => {
-                return (
+            {questions[questionNumber].answerOptions.map((answer, index) => {
+              return questions[questionNumber].correctAnswer.length !== 1 ? (
+                <FormGroup>
                   <FormControlLabel
                     value={index}
                     control={
                       <Checkbox
                         onChange={(e) => handleCheckBox(e, answers)}
                         checked={answers.includes(index)}
+                        sx={{
+                          color: colors.third[100],
+                          "&.Mui-checked": {
+                            color: colors.third[100],
+                          },
+                        }}
                       />
                     }
                     label={<Highlight>{answer}</Highlight>}
                     key={index}
                   />
-                );
-              })}
-            </FormGroup>
-            <FormHelperText sx={{ color: `${answerColor}!important` }}>
+                </FormGroup>
+              ) : (
+                <RadioGroup
+                  value={radioValue}
+                  onChange={(e) => handleRadio(e)}
+                  name='controlled-radio-buttons-group'
+                >
+                  <FormControlLabel
+                    value={index}
+                    control={
+                      <Radio
+                        sx={{
+                          color: colors.third[100],
+                          "&.Mui-checked": {
+                            color: colors.third[100],
+                          },
+                        }}
+                      />
+                    }
+                    label={<Highlight>{answer}</Highlight>}
+                    key={index}
+                  />
+                </RadioGroup>
+              );
+            })}
+
+            <FormHelperText
+              sx={{ color: `${answerColor}!important`, fontSize: "20px" }}
+            >
               {helperText}
             </FormHelperText>
           </FormControl>
           <div className={styles.btnContainer}>
             <Button
               onClick={(e) => handleSkipQuestion(e, questionNumber)}
-              variant='outlined'
               disabled={isDisabled}
+              variant='contained'
+              sx={{ bgcolor: colors.third[100] }}
             >
               Пропустить вопрос
             </Button>
             {isAnswer === true ? (
               <Button
-                variant='outlined'
+                variant='contained'
+                sx={{ bgcolor: colors.third[100] }}
                 onClick={(e) => handleNextQuestion(e, questionNumber)}
               >
                 Следующий вопрос
               </Button>
             ) : (
-              <Button variant='outlined' onClick={(e) => handleAnswer(e)}>
+              <Button
+                variant='contained'
+                sx={{ bgcolor: colors.third[100] }}
+                onClick={(e) => handleAnswer(e)}
+              >
                 Ответить
               </Button>
             )}

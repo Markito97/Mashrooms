@@ -9,8 +9,10 @@ import { Box, Button, useTheme } from "@mui/material";
 import styles from "./quizStart.module.css";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { colorTokens } from "@/theme";
-
+import { useDispatch } from "react-redux";
+import { resetToDefault } from "../../features/quizzes/quizzes-slice.js";
 export const QuizStart = () => {
+  const dispatch = useDispatch();
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
   const navigate = useNavigate();
