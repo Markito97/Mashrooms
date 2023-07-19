@@ -8,13 +8,15 @@ import { useDispatch } from "react-redux";
 import { CircularProgress } from "@mui/material";
 import ModalWindow from "../../components/Modal/ModalWindow";
 import { resetToDefault } from "./quizzes-slice";
+import { Skeleton } from "@mui/material";
 export const QuizCard = () => {
   const [quizzes, { status, error, qty }] = useQuizzes();
   const dispatch = useDispatch();
-
   return (
     <>
-      {status === "loading" && <CircularProgress />}
+      {status === "loading" && (
+        <Skeleton variant='rounded' width={"100%"} height={"235px"} />
+      )}
       {error && <h2>Cant fetch data</h2>}
       {quizzes.map((quiz) => {
         return (

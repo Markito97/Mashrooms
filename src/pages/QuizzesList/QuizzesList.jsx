@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Button } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export const QuizzesList = () => {
+  console.log("внутри квизес лист");
   const { type } = useParams();
   const typeOfPage = getTypeOfPage(type);
   return (
