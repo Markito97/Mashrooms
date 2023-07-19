@@ -1,7 +1,7 @@
-import styles from './quizComplexity.module.css';
-import { ReactComponent as ActiveMushroom } from '../../assets/icons/activeMushroom.svg';
-import { ReactComponent as InactiveMushroom } from '../../assets/icons/inactiveMushroom.svg';
-import React from 'react';
+import styles from "./quizComplexity.module.css";
+import { ReactComponent as ActiveMushroom } from "../../assets/icons/activeMushroom.svg";
+import { ReactComponent as InactiveMushroom } from "../../assets/icons/inActiveMushroom.svg";
+import React from "react";
 
 export const QuizComplexity = ({ complexity }) => {
   const mushroomIcons = Array.from({ length: 5 }, (_, index) =>
