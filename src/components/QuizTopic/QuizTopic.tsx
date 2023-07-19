@@ -1,10 +1,12 @@
 import { Box, styled } from "@mui/material";
 import styles from "./QuizTopic.module.css";
 
-export const QuizTopic = (props) => {
+export const QuizTopic = (props: any) => {
   return (
     <QuizTopicWrapper>
-      <div className={`${styles.quizType} ${styles[props.color]}`}>{props.quizType}</div>
+      <div className={`${styles.quizType} ${styles[props.color]}`}>
+        {props.quizType}
+      </div>
       <div className={styles.quizCode}>{props.quizCode}</div>
     </QuizTopicWrapper>
   );

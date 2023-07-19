@@ -8,6 +8,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { resetToDefault } from "../../features/answers/answer-slice";
 import { useDispatch } from "react-redux";
+import { useTheme } from "@mui/material";
+import { colorTokens } from "@/theme";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -22,6 +25,8 @@ const style = {
 };
 
 export default function ModalWindow({ quizId }) {
+  const theme = useTheme();
+  const colors = colorTokens(theme.palette.mode);
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -29,7 +34,11 @@ export default function ModalWindow({ quizId }) {
 
   return (
     <>
-      <Button onClick={handleOpen} variant='outlined'>
+      <Button
+        onClick={handleOpen}
+        variant='contained'
+        sx={{ bgcolor: colors.third[100], maxWidth: "fit-content" }}
+      >
         Начать
       </Button>
       <Modal

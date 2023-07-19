@@ -36,7 +36,7 @@ export const Header = () => {
                   color: "white",
                 }}
               >
-                Выйти из корзинки
+                Выйти
               </Button>
             </Link>
           ) : (
@@ -49,7 +49,7 @@ export const Header = () => {
                   color: "white",
                 }}
               >
-                В корзинку
+                Войти
               </Button>
             </Link>
           )}
