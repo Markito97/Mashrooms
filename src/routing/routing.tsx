@@ -10,8 +10,12 @@ import { RequireAuth } from "../hoc/RequireAuth.jsx";
 import { withLazyLoadingComponent } from "@/hoc/withLazyComponent.js";
 import { lazy } from "react";
 
-const LazyLogin = withLazyLoadingComponent(lazy(() => import("../pages/Login/Login")));
-const LazyProfile = withLazyLoadingComponent(lazy(() => import("../pages/Profile/Profile")));
+const LazyLogin = withLazyLoadingComponent(
+  lazy(() => import("../pages/Login/Login"))
+);
+const LazyProfile = withLazyLoadingComponent(
+  lazy(() => import("../pages/Profile/Profile"))
+);
 
 enum APP_ROUTES {
   ROOT = "/",

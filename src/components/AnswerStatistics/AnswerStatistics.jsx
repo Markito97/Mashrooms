@@ -44,17 +44,6 @@ export const AnswerStatistics = ({ category }) => {
           gap: "10px",
         }}
       >
-        <Button
-          onClick={() => {
-            dispatch(resetToDefault());
-            navigate(-2);
-          }}
-          variant='contained'
-          sx={{ bgcolor: colors.third[100], maxWidth: "fit-content" }}
-          startIcon={<ArrowBackIcon />}
-        >
-          Назад к выбору квиза
-        </Button>
         <div>Результат теста на знание технологии {category}</div>
         <div>{`Score: ${correctAnswerCounter} of ${answers.length}`}</div>
         <div>{`${correctAnswerPercent} % Correct`}</div>

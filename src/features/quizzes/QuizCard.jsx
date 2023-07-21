@@ -7,14 +7,18 @@ import { Box, Chip, Stack } from "@mui/material";
 
 export const QuizCard = () => {
   const [quizzes, { status, error }] = useQuizzes();
-
+  console.log("quizzes =>", quizzes);
   return (
     <>
       {status === "loading" && <CircularProgress />}
       {error && <h2>Cant fetch data</h2>}
       {quizzes.map((quiz) => {
         return (
-          <div className={styles.quizCardContainer} key={quiz._id}>
+          <Box
+            className={styles.quizCardContainer}
+            key={quiz._id}
+            sx={{ bgcolor: "primary.main" }}
+          >
             <div className={styles.header}>
               <div className={styles.nameOfQuiz}>{quiz.quizzesName}</div>
               <div className={styles.dificultyLvl}>
@@ -32,7 +36,7 @@ export const QuizCard = () => {
               </div>
               <ModalWindow quizId={quiz._id} />
             </div>
-          </div>
+          </Box>
         );
       })}
     </>

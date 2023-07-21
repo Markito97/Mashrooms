@@ -11,19 +11,9 @@ export const QuizzesList = () => {
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
   const typeOfPage = getTypeOfPage(type);
-  console.log(typeOfPage);
 
   return (
     <div className={styles.quizzesPageWrapper}>
-      <Link to={`/quizzes`} style={{ marginRight: "auto" }}>
-        <Button
-          variant='contained'
-          sx={{ bgcolor: colors.third[100] }}
-          startIcon={<ArrowBackIcon />}
-        >
-          Назад к выбору теста
-        </Button>
-      </Link>
       <div className={`${styles.header} ${styles[type]}`}>{typeOfPage}</div>
       <div className={styles.quizCardsContainer}>
         <QuizCard />

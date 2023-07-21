@@ -5,7 +5,7 @@ export const JavaScript = () => {
       <span style={{ color: "#9aebff" }}>document</span>.
       <span style={{ color: "#ece5a2" }}>querySelector</span>
       <span>
-        (<span style={{ color: "#cc7e5e" }}>.JavaScript</span>)
+        (<span style={{ color: "#cc7e5e" }}>'.JavaScript'</span>)
       </span>
     </div>
   );
@@ -78,29 +78,28 @@ export const HTML = () => {
 export const CSS = () => {
   return (
     <div style={{ textShadow: "none" }}>
-      <span style={{ color: "#d3b16e" }}>.flexBox </span>
+      <span style={{ color: "#d3b16e" }}>.flexBox&nbsp;&nbsp;</span>
       <span style={{ color: "#efcd19" }}>{`{`}</span>
       <br></br>
       <nobr>
         <span style={{ color: "#86d8fb" }}>display</span>
         <span style={{ color: "white" }}>
-          : <span style={{ color: "#cd866d" }}>flex</span>;
+          :&nbsp;&nbsp;
+          <span style={{ color: "#cd866d" }}>flex</span>;
         </span>
       </nobr>
       <br></br>
       <nobr>
         <span style={{ color: "#86d8fb" }}>align-items</span>
         <span style={{ color: "white" }}>
-          {" "}
-          :<span style={{ color: "#cd866d" }}>center</span>;
+          :&nbsp;&nbsp;<span style={{ color: "#cd866d" }}>center</span>;
         </span>
       </nobr>
       <br></br>
       <nobr>
         <span style={{ color: "#86d8fb" }}>justify-content</span>
         <span style={{ color: "white" }}>
-          {" "}
-          :<span style={{ color: "#cd866d" }}>center</span>;
+          :&nbsp;&nbsp;<span style={{ color: "#cd866d" }}>center</span>;
         </span>
       </nobr>
       <br></br>

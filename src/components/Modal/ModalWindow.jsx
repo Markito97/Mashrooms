@@ -17,7 +17,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: "#28282c",
+  bgcolor: "primary.main",
   color: "white",
   border: "2px solid #1976d2",
   boxShadow: 24,
@@ -106,11 +106,17 @@ export default function ModalWindow({ quizId }) {
                 dispatch(resetToDefault());
               }}
             >
-              <Button variant='outlined' onClick={handleClose}>
+              <Button
+                sx={{ bgcolor: colors.third[100], maxWidth: "fit-content" }}
+                onClick={handleClose}
+              >
                 Начать
               </Button>
             </Link>
-            <Button variant='outlined' onClick={handleClose}>
+            <Button
+              sx={{ bgcolor: colors.third[100], maxWidth: "fit-content" }}
+              onClick={handleClose}
+            >
               Назад
             </Button>
           </Box>
