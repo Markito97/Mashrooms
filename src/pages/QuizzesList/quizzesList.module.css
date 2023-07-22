@@ -18,12 +18,14 @@
 }
 .header {
   font-size: 96px;
+  align-self: flex-start;
+  font-weight: bold;
 }
 .quizCardsContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 15px;
 }

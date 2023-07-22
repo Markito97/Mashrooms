@@ -11,11 +11,11 @@ import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { colorTokens } from "@/theme";
 import { useDispatch } from "react-redux";
 import { resetToDefault } from "../../features/quizzes/quizzes-slice.js";
+
 export const QuizStart = () => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
-  const navigate = useNavigate();
   const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState("");
   const [hasError, setError] = useState(false);
@@ -56,21 +56,7 @@ export const QuizStart = () => {
               display={"flex"}
               justifyContent={"space-between"}
               alignItems={"center"}
-            >
-              <Link to={`/quizzes/${category}`}>
-                <Button
-                  onClick={() => {
-                    dispatch(resetToDefault());
-                    navigate();
-                  }}
-                  variant='contained'
-                  sx={{ bgcolor: colors.third[100] }}
-                  startIcon={<ArrowBackIcon />}
-                >
-                  Назад к выбору теста
-                </Button>
-              </Link>
-            </Box>
+            ></Box>
             <Timer />
           </div>
           <QuizQuestion category={category} questions={questions} />

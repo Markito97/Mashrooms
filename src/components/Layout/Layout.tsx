@@ -3,13 +3,14 @@ import { Header } from "../Header/Header";
 import styles from "./Layout.module.css";
 import { Container } from "@mui/material";
 import { Footer } from "../Footer/Footer";
-
+import { DynamicBreadCrumbs } from "../BreadCrumbs/DynamicBreadCrumbs.jsx";
 const Layout = () => {
   return (
     <div className={styles.layoutWrapper}>
       <Header />
       <main className={styles.main}>
-        <Container maxWidth="desktop">
+        <Container maxWidth='desktop'>
+          <DynamicBreadCrumbs />
           <Outlet />
         </Container>
       </main>
