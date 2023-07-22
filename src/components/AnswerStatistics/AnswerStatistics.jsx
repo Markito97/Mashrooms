@@ -19,21 +19,27 @@ export const AnswerStatistics = ({ category }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const answers = useSelector((state) => state.answers.list);
+  console.log("answers in AnswerStatistics =>", answers);
+
   const correctAnswerCounter = answers.reduce((acc, answer) => {
-    if (answer.isCorrectAnswer) acc++;
+    if (answer.isTrueAnswer) acc++;
     return acc;
   }, 0);
+
   const correctAnswerPercent = getCorrectAnswerPercent(
     correctAnswerCounter,
     answers.length
   );
+
   const sec = useSelector((state) => selectTimer(state));
   const time = toCorrectTime(sec);
+
   useEffect(() => {
     return () => {
       dispatch(resetTimer());
     };
   }, []);
+
   return (
     <>
       <Box
@@ -51,17 +57,7 @@ export const AnswerStatistics = ({ category }) => {
         <div className={styles.divider}></div>
       </Box>
       {answers.map((answer, index) => {
-        return (
-          <StatisticsBox
-            number={answer.number}
-            question={answer.question}
-            answerOptions={answer.answerOptions}
-            description={answer.description}
-            key={index}
-            userAnswers={answer.userAnswers}
-            correctAnswer={answer.correctAnswer}
-          />
-        );
+        return <StatisticsBox answer={answer} key={index} />;
       })}
     </>
   );

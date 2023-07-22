@@ -7,7 +7,6 @@ import { Box, Chip, Stack } from "@mui/material";
 
 export const QuizCard = () => {
   const [quizzes, { status, error }] = useQuizzes();
-  console.log("quizzes =>", quizzes);
   return (
     <>
       {status === "loading" && <CircularProgress />}

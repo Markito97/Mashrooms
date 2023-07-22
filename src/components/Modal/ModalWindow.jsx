@@ -61,7 +61,7 @@ export default function ModalWindow({ quizId }) {
             sx={{ mt: 2 }}
             color={"white"}
           >
-            {
+            {/* {
               <ul>
                 <li>
                   {" "}
@@ -89,7 +89,7 @@ export default function ModalWindow({ quizId }) {
                   ligula.
                 </li>
               </ul>
-            }
+            } */}
             Нажимая кнопку начать вы соглашаетесь со всеми правилами, что
             описаны выше, и берете на себя полную ответственность за их
             неисполнение.
