@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import { Layout } from "../components/Layout/Layout";
 import { Main } from "@/pages/Main/Main";
 import { Quizzes } from "@/pages/Quizzes/Quizzes";
@@ -10,12 +10,8 @@ import { RequireAuth } from "../hoc/RequireAuth.jsx";
 import { withLazyLoadingComponent } from "@/hoc/withLazyComponent.js";
 import { lazy } from "react";
 
-const LazyLogin = withLazyLoadingComponent(
-  lazy(() => import("../pages/Login/Login"))
-);
-const LazyProfile = withLazyLoadingComponent(
-  lazy(() => import("../pages/Profile/Profile"))
-);
+const LazyLogin = withLazyLoadingComponent(lazy(() => import("../pages/Login/Login")));
+const LazyProfile = withLazyLoadingComponent(lazy(() => import("../pages/Profile/Profile")));
 
 enum APP_ROUTES {
   ROOT = "/",
@@ -40,10 +36,12 @@ const router = createBrowserRouter([
       {
         path: APP_ROUTES.QUIZZES,
         element: <Quizzes />,
+        handle: { crumb: () => <Link to={APP_ROUTES.QUIZZES}>Викторины</Link> },
       },
       {
         path: APP_ROUTES.QUIZZES_TYPE,
         element: <QuizzesList />,
+        handle: { crumb: () => <Link to={APP_ROUTES.QUIZZES_TYPE}>абоба</Link> },
       },
       {
         path: APP_ROUTES.QUIZ_START_ID,

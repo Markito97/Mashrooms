@@ -12,20 +12,21 @@ export const QuizTopic = (props: any) => {
         {props.quizType === "HTML" ? <HTML /> : null}
         {props.quizType === "CSS" ? <CSS /> : null}
       </div>
-      <div className={styles.quizCode}>{props.quizCode}</div>
     </QuizTopicWrapper>
   );
 };
 
 const QuizTopicWrapper = styled(Box)(({ theme }) => ({
+  padding: "8px",
+  textAlign: "center",
+  height: "100%",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
-  maxWidth: "360px",
-  maxHeight: "360px",
+  minWidth: "360px",
+  minHeight: "260px",
   background: theme.palette.primary.main,
-  padding: "180px",
   borderRadius: "4px",
   boxShadow: theme.shadows[4],
 }));

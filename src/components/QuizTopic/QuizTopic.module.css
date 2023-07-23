@@ -1,33 +1,25 @@
-.quizContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: black;
-  padding: 180px;
-  max-width: 400px;
-  border-radius: 10%;
-  border: 1px solid #1976d2;
-}
 .quizType {
-  font-size: 45px;
+  font-size: 36px;
 }
 .yelow {
   color: yellow;
-  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px yellow;
+  font-weight: bold;
 }
-.red {
-  color: red;
-  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px red;
+.html {
+  font-weight: bold;
+  color: #fa3800;
+}
+
+.css {
+  font-weight: bold;
+  color: #0f4aef;
 }
 
 .white-blue {
+  font-weight: bold;
   color: rgb(8 126 164);
-  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px rgb(8 126 164);
 }
 .blue {
+  font-weight: bold;
   color: #3178c6;
-  text-shadow: 3px 5px 6px #6c9, 6px 7px 6px #3178c6;
-}
-.test {
-  display: flex;
 }

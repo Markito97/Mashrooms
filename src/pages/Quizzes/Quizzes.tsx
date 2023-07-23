@@ -30,6 +30,6 @@ const quizes = [
   { path: "/quizzes/JS", color: "yelow", quizType: "JavaScript" },
   { path: "/quizzes/React", color: "white-blue", quizType: "React" },
   { path: "/quizzes/TS", color: "blue", quizType: "TypeScript" },
-  { path: "/quizzes/HTML", color: "red", quizType: "HTML" },
-  { path: "/quizzes/CSS", color: "red", quizType: "CSS" },
+  { path: "/quizzes/HTML", color: "html", quizType: "HTML" },
+  { path: "/quizzes/CSS", color: "css", quizType: "CSS" },
 ];
