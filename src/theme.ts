@@ -98,6 +98,8 @@ export const getDesignTokens = (mode: string) => {
         desktop: 1200,
       },
     },
-    typography: {},
+    typography: {
+      fontFamily: ["Ubuntu"].join(","),
+    },
   };
 };

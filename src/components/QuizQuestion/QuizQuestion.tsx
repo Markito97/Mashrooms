@@ -1,7 +1,7 @@
 import styles from "./quizQuestion.module.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Button, Container, Box, useTheme } from "@mui/material";
+import React, { FC, useEffect, useState } from "react";
+import { Button, Box, useTheme, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addAnswer } from "../../redux/features/answers/answerSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,20 +11,26 @@ import FormHelperText from "@mui/material/FormHelperText";
 import Highlight from "react-highlight";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
-import { useLastQuestion } from "./useLastQuestion";
 import { stopTimer } from "../../redux/features/timer/timerSlice";
 import { colorTokens } from "@/theme";
+import { Answer, QuestionModel } from "@/models/question.model";
 
-export const QuizQuestion = ({ category, questions }) => {
+interface QuizQuestionProps {
+  category: string;
+  questions: QuestionModel[];
+}
+
+const PAGINATION_STEP = 1;
+
+export const QuizQuestion: FC<QuizQuestionProps> = ({ category, questions }) => {
+  const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { id } = useParams();
   const [questionNumber, setQuestionNumber] = useState(0);
-  const [answers, setAnswers] = useState([]);
+  const [answers, setAnswers] = useState<string[]>([]);
   const [error, setError] = useState(false);
   const [isAnswer, setAsnwer] = useState(false);
   const [isLastQuestion, setLastQuestion] = useState(false);
-  const [isDisabled, setDisabled] = useState(false);
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
 
@@ -35,32 +41,39 @@ export const QuizQuestion = ({ category, questions }) => {
     }
   }, [isLastQuestion]);
 
-  const handleNextQuestion = (e, questionNumber) => {
+  const checkLastQuestion = (questionNumber: number, length: number): boolean => {
+    return questionNumber + 1 === length ? true : false;
+  };
+
+  const handleNextQuestion = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setAsnwer(false);
-    setDisabled(false);
     setError(false);
     setAnswers([]);
-    if (questionNumber + 1 < questions.length) {
-      setQuestionNumber(questionNumber + 1);
+    if (questionNumber + PAGINATION_STEP < questions.length) {
+      setQuestionNumber(questionNumber + PAGINATION_STEP);
     }
   };
-  const handleSkipQuestion = (e, questionNumber) => {
+
+  const handleSkipQuestion = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    const answerOptions = questions[questionNumber].answers.map((answer) => {
+      answer.userSelect = null;
+      return answer;
+    });
+
     dispatch(
       addAnswer({
         number: questionNumber,
         question: questions[questionNumber].question,
-        answerOptions: questions[questionNumber].answers.map((answer) => {
-          answer.userSelect = null;
-          return answer;
-        }),
+        answerOptions: answerOptions,
       })
     );
-    const isLastQuestion = useLastQuestion(questionNumber, questions.length);
+
+    const isLastQuestion = checkLastQuestion(questionNumber, questions.length);
     setLastQuestion(isLastQuestion);
-    e.preventDefault();
     setAsnwer(false);
-    setDisabled(false);
     setError(false);
     setAnswers([]);
     if (questionNumber + 1 < questions.length) {
@@ -68,17 +81,15 @@ export const QuizQuestion = ({ category, questions }) => {
     }
   };
 
-  const handleCheckBox = (event, answer) => {
+  const handleCheckBox = (answer: Answer): void => {
     if (answers.some((item) => item === answer.key)) {
-      setAnswers((prevAnswers) => {
-        return prevAnswers.filter((item) => item !== answer.key);
-      });
+      setAnswers((prevAnswers) => prevAnswers.filter((item) => item !== answer.key));
     } else {
       setAnswers([...answers, answer.key]);
     }
   };
 
-  const handleAnswer = (e) => {
+  const handleAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const resultAnswer = questions[questionNumber].answers.map((answer) => {
       if (answers.includes(answer.key)) {
@@ -98,7 +109,7 @@ export const QuizQuestion = ({ category, questions }) => {
       setError(false);
     }
     setAsnwer(true);
-    const isLastQuestion = useLastQuestion(questionNumber, questions.length);
+    const isLastQuestion = checkLastQuestion(questionNumber, questions.length);
     setLastQuestion(isLastQuestion);
     dispatch(
       addAnswer({
@@ -109,15 +120,14 @@ export const QuizQuestion = ({ category, questions }) => {
       })
     );
   };
-  if (questions.length === 0) return null;
+
   return (
     <div className={styles.questionBox}>
-      <Container sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <h1 className={styles.questionBoxTitle}>
-          Тест на знание технологии{" "}
-          <span className={styles[category]}>{category}</span>
-        </h1>
-        <Container
+      <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+        <Typography variant="h3" color={colors.third[100]} fontWeight="bold">
+          Тест на знание технологии <span className={styles[category]}>{category}</span>
+        </Typography>
+        <Box
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -125,17 +135,11 @@ export const QuizQuestion = ({ category, questions }) => {
             justifyContent: "space-between",
           }}
         >
-          <Box
-            border={1}
-            borderColor={"#1976d2"}
-            marginBottom={"20px"}
-            padding={"20px"}
-          >
+          <Box border={1} borderColor={"#1976d2"} marginBottom={"20px"} padding={"20px"}>
             <Highlight>{questions[questionNumber].question}</Highlight>
           </Box>
-          <FormControl error={error} size='medium'>
+          <FormControl error={error} size="medium">
             <FormLabel
-              id='demo-controlled-radio-buttons-group'
               sx={{
                 fontSize: "30px",
                 color: `${colors.third[100]} !important`,
@@ -152,7 +156,7 @@ export const QuizQuestion = ({ category, questions }) => {
                     control={
                       <Checkbox
                         onChange={(e) => {
-                          handleCheckBox(e, answer, answers);
+                          handleCheckBox(answer);
                         }}
                         checked={answers.some((item) => item === answer.key)}
                         sx={{
@@ -176,8 +180,8 @@ export const QuizQuestion = ({ category, questions }) => {
           </FormControl>
           <div className={styles.btnContainer}>
             <Button
-              onClick={(e) => handleSkipQuestion(e, questionNumber)}
-              variant='contained'
+              onClick={(e) => handleSkipQuestion(e)}
+              variant="contained"
               sx={{ bgcolor: colors.third[100] }}
               disabled={isAnswer}
             >
@@ -185,15 +189,15 @@ export const QuizQuestion = ({ category, questions }) => {
             </Button>
             {isAnswer === true ? (
               <Button
-                variant='contained'
+                variant="contained"
                 sx={{ bgcolor: colors.third[100] }}
-                onClick={(e) => handleNextQuestion(e, questionNumber)}
+                onClick={(e) => handleNextQuestion(e)}
               >
                 Следующий вопрос
               </Button>
             ) : (
               <Button
-                variant='contained'
+                variant="contained"
                 sx={{ bgcolor: colors.third[100] }}
                 onClick={(e) => handleAnswer(e)}
                 disabled={Boolean(!answers.length)}
@@ -202,8 +206,8 @@ export const QuizQuestion = ({ category, questions }) => {
               </Button>
             )}
           </div>
-        </Container>
-      </Container>
+        </Box>
+      </Box>
     </div>
   );
 };

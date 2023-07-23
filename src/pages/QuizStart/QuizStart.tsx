@@ -1,25 +1,19 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { QuizQuestion } from "../../components/QuizQuestion/QuizQuestion";
 import { useEffect, useState } from "react";
 import { getQuizById } from "../../config";
 import { CircularProgress } from "@mui/material";
 import Timer from "../../redux/features/timer/Timer.jsx";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { Box, Button, useTheme } from "@mui/material";
+import { Box } from "@mui/material";
 import styles from "./quizStart.module.css";
-import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
-import { colorTokens } from "@/theme";
-import { useDispatch } from "react-redux";
-import { resetToDefault } from "../../redux/features/quizzes/quizzesSlice.js";
+import FullScreenErrorPage from "@/components/FullScreenErrorPage/FullScreenErrorPage.js";
 
 export const QuizStart = () => {
-  const dispatch = useDispatch();
-  const theme = useTheme();
-  const colors = colorTokens(theme.palette.mode);
   const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState("");
   const [hasError, setError] = useState(false);
   const { id } = useParams();
+
   useEffect(() => {
     (async () => {
       try {
@@ -34,7 +28,7 @@ export const QuizStart = () => {
     })();
   }, [id]);
 
-  if (hasError) return <ErrorBoundary />;
+  if (hasError) return <FullScreenErrorPage />;
   return (
     <>
       {!questions.length && (
@@ -52,11 +46,7 @@ export const QuizStart = () => {
       {Boolean(questions.length) && (
         <>
           <div className={styles.topPart}>
-            <Box
-              display={"flex"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-            ></Box>
+            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}></Box>
             <Timer />
           </div>
           <QuizQuestion category={category} questions={questions} />

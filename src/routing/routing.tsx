@@ -5,10 +5,10 @@ import { Quizzes } from "@/pages/Quizzes/Quizzes";
 import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
 import { QuizStart } from "@/pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
-import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary.jsx";
 import { RequireAuth } from "../redux/features/auth/RequireAuth.jsx";
 import { withLazyLoadingComponent } from "@/redux/features/auth/WithLazyComponent.js";
 import { lazy } from "react";
+import FullScreenErrorPage from "@/components/FullScreenErrorPage/FullScreenErrorPage.js";
 
 const LazyLogin = withLazyLoadingComponent(lazy(() => import("../pages/Login/Login")));
 const LazyProfile = withLazyLoadingComponent(lazy(() => import("../pages/Profile/Profile")));
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   {
     path: APP_ROUTES.ROOT,
     element: <Layout />,
-    errorElement: <ErrorBoundary />,
+    errorElement: <FullScreenErrorPage />,
     children: [
       {
         index: true,
