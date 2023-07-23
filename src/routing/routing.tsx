@@ -6,8 +6,8 @@ import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
 import { QuizStart } from "@/pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
 import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary.jsx";
-import { RequireAuth } from "../hoc/RequireAuth.jsx";
-import { withLazyLoadingComponent } from "@/hoc/withLazyComponent.js";
+import { RequireAuth } from "../redux/features/auth/RequireAuth.jsx";
+import { withLazyLoadingComponent } from "@/redux/features/auth/WithLazyComponent.js";
 import { lazy } from "react";
 
 const LazyLogin = withLazyLoadingComponent(lazy(() => import("../pages/Login/Login")));

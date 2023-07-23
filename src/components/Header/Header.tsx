@@ -4,7 +4,7 @@ import { Box, Container, styled, useTheme } from "@mui/material";
 import { HeaderLogo } from "./HeaderLogo";
 import { Link } from "react-router-dom";
 import { colorTokens } from "../../theme";
-import { useLazyLogoutQuery } from "@/redux/auth";
+import { useLazyLogoutQuery } from "@/redux/features/auth/auth";
 import { useSelector } from "react-redux";
 
 export const Header = () => {

@@ -3,14 +3,14 @@ import { QuizQuestion } from "../../components/QuizQuestion/QuizQuestion";
 import { useEffect, useState } from "react";
 import { getQuizById } from "../../config";
 import { CircularProgress } from "@mui/material";
-import Timer from "../../features/timer/Timer";
+import Timer from "../../redux/features/timer/Timer.jsx";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { Box, Button, useTheme } from "@mui/material";
 import styles from "./quizStart.module.css";
 import ErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { colorTokens } from "@/theme";
 import { useDispatch } from "react-redux";
-import { resetToDefault } from "../../features/quizzes/quizzes-slice.js";
+import { resetToDefault } from "../../redux/features/quizzes/quizzesSlice.js";
 
 export const QuizStart = () => {
   const dispatch = useDispatch();

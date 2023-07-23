@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import axios from "axios";
 import * as api from "../config";
-import { quizzesReducer } from "../features/quizzes/quizzes-slice";
-import { answersReducer } from "../features/answers/answer-slice";
-import { timerReducer } from "../features/timer/timer-slice";
-import { authReducer } from "../redux/slices/auth.slice";
-import { authApi } from "./auth";
+import { quizzesReducer } from "./features/quizzes/quizzesSlice";
+import { answersReducer } from "./features/answers/answerSlice";
+import { timerReducer } from "./features/timer/timerSlice";
+import { authReducer } from "./features/auth/authSlice";
+import { authApi } from "./features/auth/auth";
 
 export const store = configureStore({
   reducer: {

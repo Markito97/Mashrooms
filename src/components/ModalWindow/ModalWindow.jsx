@@ -1,12 +1,8 @@
 import * as React from "react";
-// import Box from '@mui/material/Box';
-// import P from '@mui/material/Button';
-// import Typography from '@mui/material/Typography';
-// import Modal from '@mui/material/Modal';
 import { Box, Button, Modal, Typography } from "@mui/material";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { resetToDefault } from "../../features/answers/answer-slice";
+import { resetToDefault } from "../../redux/features/answers/answerSlice";
 import { useDispatch } from "react-redux";
 import { useTheme } from "@mui/material";
 import { colorTokens } from "@/theme";
@@ -61,7 +57,7 @@ export default function ModalWindow({ quizId }) {
             sx={{ mt: 2 }}
             color={"white"}
           >
-            {
+            {/* {
               <ul>
                 <li>
                   {" "}
@@ -89,7 +85,7 @@ export default function ModalWindow({ quizId }) {
                   ligula.
                 </li>
               </ul>
-            }
+            } */}
             Нажимая кнопку начать вы соглашаетесь со всеми правилами, что
             описаны выше, и берете на себя полную ответственность за их
             неисполнение.

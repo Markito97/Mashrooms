@@ -2,9 +2,9 @@ import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./timer.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { updateTimer } from "./timer-slice";
-import { toCorrectTime } from "../../utils/toCorrectTime";
-import { selectStop } from "./timer-slice";
+import { updateTimer } from "./timerSlice";
+import { toCorrectTime } from "../../../utils/toCorrectTime";
+import { selectStop } from "./timerSlice";
 const Timer = () => {
   const isStop = useSelector((state) => selectStop(state));
   const dispatch = useDispatch();

@@ -6,32 +6,19 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useCorrectAnswer } from "./useCorrectAnswer";
-export const StatisticsBox = ({
-  number,
-  question,
-  answerOptions,
-  description,
-  userAnswers,
-  correctAnswer,
-}) => {
-  const { correct, incorrect } = useCorrectAnswer(userAnswers, correctAnswer);
+export const StatisticsBox = ({ answer }) => {
   return (
     <div className={styles.statisticBox}>
-      <h1>{`Вопрос ${number + 1} :`}</h1>
-      <p>{question}</p>
+      <h1>{`Вопрос ${answer.number + 1} :`}</h1>
+      <p>{answer.question}</p>
       <ul>
-        {answerOptions.map((answer, index) => {
-          let answerColor;
-          if (correct.includes(index)) {
-            answerColor = "correctAnswer";
-          } else if (incorrect.includes(index)) {
-            answerColor = "inCorrectAnswer";
-          } else {
-            correctAnswer = null;
-          }
+        {answer.answerOptions.map((answer, index) => {
+          const isCorrect = useCorrectAnswer(answer);
           return (
             <li key={index}>
-              <Highlight className={styles[answerColor]}>{answer}</Highlight>
+              <Highlight className={styles[isCorrect]}>
+                {answer.value}
+              </Highlight>
             </li>
           );
         })}
@@ -50,7 +37,7 @@ export const StatisticsBox = ({
           <Typography color={"white"}>Пачиму так?</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{description}</Typography>
+          <Typography>описаниееееееееееееее</Typography>
         </AccordionDetails>
       </Accordion>
     </div>

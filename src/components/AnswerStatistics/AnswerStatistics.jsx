@@ -1,14 +1,12 @@
 import * as React from "react";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCorrectAnswerPercent } from "../../utils/getCorrectAnswerPercent";
 import styles from "./answerStatistics.module.css";
 import { StatisticsBox } from "./StatisticsBox";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { resetToDefault } from "../../features/answers/answer-slice";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { selectTimer, resetTimer } from "../../features/timer/timer-slice";
+import { useNavigate } from "react-router-dom";
+import { selectTimer, resetTimer } from "../../redux/features/timer/timerSlice";
 import { toCorrectTime } from "../../utils/toCorrectTime";
 import { colorTokens } from "@/theme";
 import { useTheme } from "@mui/material";
@@ -19,21 +17,27 @@ export const AnswerStatistics = ({ category }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const answers = useSelector((state) => state.answers.list);
+  console.log("answers in AnswerStatistics =>", answers);
+
   const correctAnswerCounter = answers.reduce((acc, answer) => {
-    if (answer.isCorrectAnswer) acc++;
+    if (answer.isTrueAnswer) acc++;
     return acc;
   }, 0);
+
   const correctAnswerPercent = getCorrectAnswerPercent(
     correctAnswerCounter,
     answers.length
   );
+
   const sec = useSelector((state) => selectTimer(state));
   const time = toCorrectTime(sec);
+
   useEffect(() => {
     return () => {
       dispatch(resetTimer());
     };
   }, []);
+
   return (
     <>
       <Box
@@ -51,17 +55,7 @@ export const AnswerStatistics = ({ category }) => {
         <div className={styles.divider}></div>
       </Box>
       {answers.map((answer, index) => {
-        return (
-          <StatisticsBox
-            number={answer.number}
-            question={answer.question}
-            answerOptions={answer.answerOptions}
-            description={answer.description}
-            key={index}
-            userAnswers={answer.userAnswers}
-            correctAnswer={answer.correctAnswer}
-          />
-        );
+        return <StatisticsBox answer={answer} key={index} />;
       })}
     </>
   );

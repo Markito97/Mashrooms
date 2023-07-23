@@ -3,7 +3,7 @@ import styles from "./quizes.module.css";
 import { QuizTopic } from "../../components/QuizTopic/QuizTopic";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { resetToDefault } from "../../features/quizzes/quizzes-slice";
+import { resetToDefault } from "../../redux/features/quizzes/quizzesSlice";
 
 const Quizzes = () => {
   const dispatch = useDispatch();
