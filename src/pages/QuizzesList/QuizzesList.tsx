@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { getTypeOfPage } from "../../utils/getTypeOfPage";
 import styles from "./quizzesList.module.css";
-import { QuizCard } from "../../features/quizzes/QuizCard";
+import { QuizCard } from "../../redux/features/quizzes/QuizCard";
 import { Button, useTheme } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { colorTokens } from "@/theme";

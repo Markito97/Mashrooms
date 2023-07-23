@@ -1,9 +1,9 @@
-import styles from "./QuizQuestion.module.css";
+import styles from "./quizQuestion.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Button, Container, Box, useTheme } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { addAnswer } from "../../features/answers/answer-slice";
+import { addAnswer } from "../../redux/features/answers/answerSlice";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
@@ -12,7 +12,7 @@ import Highlight from "react-highlight";
 import Checkbox from "@mui/material/Checkbox";
 import FormGroup from "@mui/material/FormGroup";
 import { useLastQuestion } from "./useLastQuestion";
-import { stopTimer } from "../../features/timer/timer-slice";
+import { stopTimer } from "../../redux/features/timer/timerSlice";
 import { colorTokens } from "@/theme";
 
 export const QuizQuestion = ({ category, questions }) => {

@@ -1,4 +1,4 @@
-import { useLazyLogoutQuery } from "@/redux/auth";
+import { useLazyLogoutQuery } from "@/redux/features/auth/auth";
 import { Button } from "@mui/material";
 import { useSelector } from "react-redux";
 

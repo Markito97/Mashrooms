@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
-import styles from "./Layout.module.css";
+import styles from "./layout.module.css";
 import { Container } from "@mui/material";
 import { Footer } from "../Footer/Footer";
 import { DynamicBreadCrumbs } from "../BreadCrumbs/DynamicBreadCrumbs.jsx";

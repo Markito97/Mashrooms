@@ -1,6 +1,6 @@
 import { useLocation, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useHandleSessionQuery } from "../redux/auth";
+import { useHandleSessionQuery } from "./auth";
 export const RequireAuth = ({ children }) => {
   const location = useLocation();
   const { data, isLoading, isError, isSuccess } = useHandleSessionQuery(void 0);

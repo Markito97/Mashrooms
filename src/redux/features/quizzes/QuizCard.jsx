@@ -1,8 +1,8 @@
 import styles from "./quizCard.module.css";
-import { QuizComplexity } from "../../components/QuizComplexity/QuizComplexity";
-import { useQuizzes } from "./use-Quizzes";
+import { QuizComplexity } from "../../../components/QuizComplexity/QuizComplexity";
+import { useQuizzes } from "./useQuizzes";
 import { CircularProgress } from "@mui/material";
-import ModalWindow from "../../components/Modal/ModalWindow";
+import ModalWindow from "../../../components/ModalWindow/ModalWindow";
 import { Box, Chip, Stack } from "@mui/material";
 
 export const QuizCard = () => {

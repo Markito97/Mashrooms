@@ -1,14 +1,12 @@
 import * as React from "react";
-import { Box, Button } from "@mui/material";
+import { Box } from "@mui/material";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCorrectAnswerPercent } from "../../utils/getCorrectAnswerPercent";
 import styles from "./answerStatistics.module.css";
 import { StatisticsBox } from "./StatisticsBox";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { resetToDefault } from "../../features/answers/answer-slice";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { selectTimer, resetTimer } from "../../features/timer/timer-slice";
+import { useNavigate } from "react-router-dom";
+import { selectTimer, resetTimer } from "../../redux/features/timer/timerSlice";
 import { toCorrectTime } from "../../utils/toCorrectTime";
 import { colorTokens } from "@/theme";
 import { useTheme } from "@mui/material";

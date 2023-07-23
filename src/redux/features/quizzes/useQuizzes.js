@@ -1,9 +1,9 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { selectAllQuizzes } from './quizzes-slice';
-import { loadQuiz } from './quizzes-slice';
-import { selectQuizzesInfo } from './quizzes-slice';
-import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useSelector, useDispatch } from "react-redux";
+import { selectAllQuizzes } from "./quizzesSlice";
+import { loadQuiz } from "./quizzesSlice";
+import { selectQuizzesInfo } from "./quizzesSlice";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 export const useQuizzes = () => {
   const { type } = useParams();
