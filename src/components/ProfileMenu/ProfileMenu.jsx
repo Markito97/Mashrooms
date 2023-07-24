@@ -6,10 +6,8 @@ import {
   Avatar,
   IconButton,
   MenuItem,
-  Typography,
   Menu,
   useTheme,
-  Button,
   Divider,
 } from "@mui/material";
 import Logout from "@mui/icons-material/Logout";
@@ -56,7 +54,7 @@ export const ProfileMenu = () => {
       <HomeIcon />
       Главная
     </Link>,
-    <Link to={"#"} style={linkStyles}>
+    <Link to={"/rules"} style={linkStyles}>
       <LightbulbIcon />
       Правила
     </Link>,
@@ -85,7 +83,6 @@ export const ProfileMenu = () => {
       <Menu
         sx={{
           mt: "45px",
-          bgcolor: "primary.main !important",
         }}
         id='menu-appbar'
         anchorEl={anchorElUser}
@@ -111,10 +108,9 @@ export const ProfileMenu = () => {
           {name}
         </MenuItem>
         <Divider />
-
-        {settings.map((setting) => (
+        {settings.map((setting, index) => (
           <MenuItem
-            key={setting}
+            key={index}
             onClick={handleCloseUserMenu}
             sx={{ ...menuItemStlyes, minWidth: "250px" }}
           >

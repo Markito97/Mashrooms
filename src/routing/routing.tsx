@@ -2,6 +2,8 @@ import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import { Layout } from "../components/Layout/Layout";
 import { Main } from "@/pages/Main/Main";
 import { Quizzes } from "@/pages/Quizzes/Quizzes";
+import { Rules } from "@/pages/Rules/Rules";
+
 import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
 import { QuizStart } from "@/pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
@@ -10,8 +12,12 @@ import { withLazyLoadingComponent } from "@/redux/features/auth/WithLazyComponen
 import { lazy } from "react";
 import FullScreenErrorPage from "@/components/FullScreenErrorPage/FullScreenErrorPage.js";
 
-const LazyLogin = withLazyLoadingComponent(lazy(() => import("../pages/Login/Login")));
-const LazyProfile = withLazyLoadingComponent(lazy(() => import("../pages/Profile/Profile")));
+const LazyLogin = withLazyLoadingComponent(
+  lazy(() => import("../pages/Login/Login"))
+);
+const LazyProfile = withLazyLoadingComponent(
+  lazy(() => import("../pages/Profile/Profile.jsx"))
+);
 
 enum APP_ROUTES {
   ROOT = "/",
@@ -21,6 +27,7 @@ enum APP_ROUTES {
   QUIZ_STAT_CATEG_ID = "/quizStatistic/:category/:id",
   LOGIN = "/login",
   PROFILE = "/profile",
+  RULES = "/rules",
 }
 
 const router = createBrowserRouter([
@@ -41,7 +48,9 @@ const router = createBrowserRouter([
       {
         path: APP_ROUTES.QUIZZES_TYPE,
         element: <QuizzesList />,
-        handle: { crumb: () => <Link to={APP_ROUTES.QUIZZES_TYPE}>абоба</Link> },
+        handle: {
+          crumb: () => <Link to={APP_ROUTES.QUIZZES_TYPE}>абоба</Link>,
+        },
       },
       {
         path: APP_ROUTES.QUIZ_START_ID,
@@ -54,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: APP_ROUTES.LOGIN,
         element: <LazyLogin />,
+      },
+      {
+        path: APP_ROUTES.RULES,
+        element: <Rules />,
       },
       {
         path: APP_ROUTES.PROFILE,

@@ -9,7 +9,7 @@ const Layout = () => {
     <div className={styles.layoutWrapper}>
       <Header />
       <main className={styles.main}>
-        <Container maxWidth="desktop">
+        <Container maxWidth='desktop'>
           <DynamicBreadCrumbs />
           <div style={{ paddingTop: "60px", paddingBottom: "60px" }}>
             <Outlet />
