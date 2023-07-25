@@ -4,7 +4,8 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Navigate } from "react-router-dom";
-const Login = () => {
+
+export const Login = () => {
   const theme = useTheme();
   const colors = colorTokens(theme.palette.mode);
   const isAuth = useSelector((state: any) => state.auth.user);

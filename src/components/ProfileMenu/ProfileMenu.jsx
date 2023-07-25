@@ -100,7 +100,6 @@ export const ProfileMenu = () => {
       >
         <MenuItem sx={menuItemStlyes}>
           <Avatar
-            sizes='100px'
             variant='circular'
             alt='user-avatar'
             sx={{ width: "32px", height: "32px" }}

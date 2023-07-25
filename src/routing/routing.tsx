@@ -7,7 +7,7 @@ import { Rules } from "@/pages/Rules/Rules";
 import { QuizzesList } from "../pages/QuizzesList/QuizzesList";
 import { QuizStart } from "@/pages/QuizStart/QuizStart";
 import { QuizStatistic } from "../pages/QuizStatistic/QuizStatistic";
-import { RequireAuth } from "../redux/features/auth/RequireAuth.jsx";
+import RequireAuth from "../redux/features/auth/RequireAuth.jsx";
 import { withLazyLoadingComponent } from "@/redux/features/auth/WithLazyComponent.js";
 import { lazy } from "react";
 import FullScreenErrorPage from "@/components/FullScreenErrorPage/FullScreenErrorPage.js";
