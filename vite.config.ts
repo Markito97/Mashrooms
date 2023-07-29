@@ -7,7 +7,7 @@ import dns from "dns";
 dns.setDefaultResultOrder("verbatim");
 
 export default defineConfig({
-  base: "http://90.156.209.113/",
+  base: "https://2maslenka-quizzes.ru/",
   plugins: [react(), svgr()],
   resolve: {
     alias: {
