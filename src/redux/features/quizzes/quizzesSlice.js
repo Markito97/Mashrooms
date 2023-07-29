@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadQuiz = createAsyncThunk(
   "@@quizzes/load-quiz",
   async (name, { extra: { client, api } }) => {
-    return client.get("https://2maslenka-quizzes.ru/api" + `?query=${name}`);
+    return client.get(api.BASE_URL + `quizzes/?query=${name}`);
   }
 );
 
