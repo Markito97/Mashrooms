@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 export const loadQuiz = createAsyncThunk(
   "@@quizzes/load-quiz",
   async (name, { extra: { client, api } }) => {
-    return client.get(api.BASE_URL + `quizzes/?query=${name}`);
+    return client.get(import.meta.env.VITE_BASE_URL + `quizzes/?query=${name}`);
   }
 );
 
