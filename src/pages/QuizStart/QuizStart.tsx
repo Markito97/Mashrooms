@@ -17,7 +17,10 @@ export const QuizStart = () => {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch(getQuizById(id));
+        console.log(import.meta.env.VITE_BASE_URL);
+        const res = await fetch(
+          import.meta.env.VITE_BASE_URL + "quizzes/" + id
+        );
         if (!res.ok) setError(true);
         const data = await res.json();
         setQuestions(data.questions);
@@ -46,7 +49,11 @@ export const QuizStart = () => {
       {Boolean(questions.length) && (
         <>
           <div className={styles.topPart}>
-            <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}></Box>
+            <Box
+              display={"flex"}
+              justifyContent={"space-between"}
+              alignItems={"center"}
+            ></Box>
             <Timer />
           </div>
           <QuizQuestion category={category} questions={questions} />
