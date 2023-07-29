@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { Header } from "../Header/Header";
-import styles from "./layout.module.css";
+import styles from "./Layout.module.css";
 import { Container } from "@mui/material";
 import { Footer } from "../Footer/Footer";
 import { DynamicBreadCrumbs } from "../BreadCrumbs/DynamicBreadCrumbs.jsx";
@@ -10,7 +10,7 @@ const Layout = () => {
     <div className={styles.layoutWrapper}>
       <Header />
       <main className={styles.main}>
-        <Container maxWidth='desktop'>
+        <Container maxWidth="desktop">
           <DynamicBreadCrumbs />
           <div style={{ paddingTop: "60px", paddingBottom: "60px" }}>
             <Outlet />
