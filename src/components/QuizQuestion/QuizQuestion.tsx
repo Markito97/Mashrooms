@@ -1,4 +1,4 @@
-import styles from "./quizQuestion.module.css";
+import styles from "./QuizQuestion.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { FC, useEffect, useState } from "react";
 import { Button, Box, useTheme, Typography } from "@mui/material";
