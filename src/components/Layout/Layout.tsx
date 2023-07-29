@@ -4,6 +4,7 @@ import styles from "./layout.module.css";
 import { Container } from "@mui/material";
 import { Footer } from "../Footer/Footer";
 import { DynamicBreadCrumbs } from "../BreadCrumbs/DynamicBreadCrumbs.jsx";
+
 const Layout = () => {
   return (
     <div className={styles.layoutWrapper}>
