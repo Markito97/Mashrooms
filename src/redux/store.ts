@@ -21,7 +21,6 @@ export const store = configureStore({
       thunk: {
         extraArgument: {
           client: axios,
-          api: api,
         },
       },
       serializableCheck: false,
