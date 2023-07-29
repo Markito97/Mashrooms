@@ -45,6 +45,14 @@ function App() {
         },
       },
     };
+    currentTheme.components!.MuiPaper = {
+      styleOverrides: {
+        root: {
+          backgroundImage: "none",
+          backgroundColor: colors.primary[100],
+        },
+      },
+    };
 
     return currentTheme;
   }, [mode]);

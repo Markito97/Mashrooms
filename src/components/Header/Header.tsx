@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { colorTokens } from "../../theme";
 import { useLazyLogoutQuery } from "@/redux/features/auth/auth";
 import { useSelector } from "react-redux";
+import { ProfileMenu } from "../ProfileMenu/ProfileMenu.jsx";
 
 export const Header = () => {
   const theme = useTheme();
@@ -26,19 +27,7 @@ export const Header = () => {
         <AppBarContent>
           <HeaderLogo />
           {isAuth ? (
-            <Link to={"/"}>
-              <Button
-                onClick={logout}
-                variant='contained'
-                sx={{
-                  whiteSpace: "nowrap",
-                  bgcolor: colors.third[100],
-                  color: "white",
-                }}
-              >
-                Выйти
-              </Button>
-            </Link>
+            <ProfileMenu />
           ) : (
             <Link to={"/login"}>
               <Button

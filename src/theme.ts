@@ -32,7 +32,7 @@ export const colorTokens = (mode: string) => ({
           100: "#346a4c",
         },
         text: {
-          100: "#000000",
+          100: "#000",
         },
       }
     : {
@@ -46,7 +46,7 @@ export const colorTokens = (mode: string) => ({
           100: "#1593bc",
         },
         text: {
-          100: "#5c7241",
+          100: "white",
         },
       }),
 });
