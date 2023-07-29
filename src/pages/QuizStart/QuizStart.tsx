@@ -17,8 +17,7 @@ export const QuizStart = () => {
   useEffect(() => {
     (async () => {
       try {
-        console.log(import.meta.env.VITE_BASE_URL);
-        const res = await fetch(import.meta.env.VITE_BASE_URL + "quizzes/" + id);
+        const res = await fetch("https://2maslenka-quizzes.ru/api/" + "quizzes/" + id);
         if (!res.ok) setError(true);
         const data = await res.json();
         setQuestions(data.questions);
