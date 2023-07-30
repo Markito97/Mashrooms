@@ -57,35 +57,6 @@ export default function ModalWindow({ quizId }) {
             sx={{ mt: 2 }}
             color={"white"}
           >
-            {/* {
-              <ul>
-                <li>
-                  {" "}
-                  1. Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula.
-                </li>
-                <li>
-                  {" "}
-                  2. Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula.
-                </li>
-                <li>
-                  {" "}
-                  3. Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula.
-                </li>
-                <li>
-                  {" "}
-                  4. Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula.
-                </li>
-                <li>
-                  {" "}
-                  5. Duis mollis, est non commodo luctus, nisi erat porttitor
-                  ligula.
-                </li>
-              </ul>
-            } */}
             Нажимая кнопку начать вы соглашаетесь со всеми правилами, что
             описаны выше, и берете на себя полную ответственность за их
             неисполнение.

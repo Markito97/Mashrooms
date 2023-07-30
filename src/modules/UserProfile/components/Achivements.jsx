@@ -1,10 +1,9 @@
 import { Box, Typography } from "@mui/material";
-import UserLevel from "../UserLevel/UserLevel";
+import UserLevel from "./UserLevel";
 import { useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-import styles from "./calendarStyles.module.css";
-import { UserProgress } from "../UserProgress/UserProgress";
+import { UserProgress } from "./UserProgress";
 
 export default function Achivements() {
   const [value, onChange] = useState(new Date());
@@ -36,31 +35,20 @@ export default function Achivements() {
         }}
       >
         <UserLevel />
-        {/* типо каленадрь */}
-        <div>
-          <Calendar
-            onChange={onChange}
-            value={value}
-            next2Label={null}
-            prev2Label={null}
-            className={styles.test}
-          />
-        </div>
-        {/* <div
+        <div
           style={{ width: "320px", height: "300px", border: "1px solid red" }}
-        ></div> */}
-        {/* типо хуй знает что */}
+        >
+          {" "}
+          тут будет какой-то компонент
+        </div>
         <div
           style={{ width: "120px", height: "180px", border: "1px solid red" }}
-        ></div>
+        >
+          {" "}
+          тут будет какой-то компонент
+        </div>
       </Box>
-      <Box>
-        <Typography sx={{ marginBottom: "25px" }} variant='h6'>
-          Набери n очков и апни следующий уровень!
-        </Typography>
-
-        <UserProgress />
-      </Box>
+      <UserProgress />
     </Box>
   );
 }
